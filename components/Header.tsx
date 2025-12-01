@@ -1,7 +1,9 @@
-'use client';
+"use client";
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
+  const { totalPrice } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -64,8 +66,7 @@ export default function Header() {
               id="cartBtn"
               className="inline-flex items-center justify-center border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-4 py-2 rounded-full text-sm transition"
             >
-              <i className="ri-shopping-cart-line mr-2"></i> Cart (
-              <span id="cartCount">0</span>)
+              <i className="ri-shopping-cart-line mr-2"></i> Cart ${totalPrice}
             </button>
             <a href="#menu" data-discover="true">
               <button className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 px-4 py-2 rounded-full text-sm transition">
@@ -76,11 +77,10 @@ export default function Header() {
 
           {/* Mobile Buttons */}
           <button
-            id="cartBtnMobile"
+            id="cartBtn"
             className="md:hidden inline-flex items-center justify-center border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-full text-xs transition mx-auto"
           >
-            <i className="ri-shopping-cart-line mr-1"></i>
-            Cart (<span id="cartCountMobile">0</span>)
+            <i className="ri-shopping-cart-line"></i> Cart ${totalPrice}
           </button>
 
           <button

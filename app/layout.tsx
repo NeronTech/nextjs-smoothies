@@ -2,10 +2,12 @@
 import "./globals.css";
 import PwaRegister from "../components/PwaRegister";
 import PageLoader from "../components/PageLoader";
+import { CartProvider } from "../context/CartContext";
+import OrderModal from '../components/OrderModal';
 
 export const metadata = {
-  title: "My App — Landing",
-  description: "Next.js SPA with full SEO + PWA + GAS backend",
+  title: "Smoothies & More",
+  description: "Healthy smoothies and snacks",
 };
 
 export default function RootLayout({
@@ -55,8 +57,11 @@ export default function RootLayout({
       </head>
 
       <body className="bg-gradient-to-b from-white to-gray-50 font-sans">
-        <PageLoader />
-        <PwaRegister>{children}</PwaRegister>
+        <CartProvider>
+          <PageLoader />
+          <PwaRegister>{children}</PwaRegister>
+          <OrderModal />
+        </CartProvider>
       </body>
     </html>
   );

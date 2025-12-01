@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { useCart } from "../context/CartContext";
 
 const GAS_URL =
   "https://script.google.com/macros/s/AKfycbwvoMt2Tz3JSdWwo29cod-ru0XpGp3IDxZ5xnd-CAVZ4lc4joD8SBnKGeDKMcgRVwi6/exec";
@@ -22,6 +23,7 @@ export default function MenuSection() {
   const [menuData, setMenuData] = useState<MenuCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { addToCart } = useCart();
 
   const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
@@ -60,11 +62,6 @@ export default function MenuSection() {
           : container.clientWidth * 0.6,
       behavior: "smooth",
     });
-  };
-
-  const addToCart = (name: string, price: number) => {
-    console.log(`Added to cart: ${name} - $${price}`);
-    // Implement cart logic here
   };
 
   if (loading) return <p className="text-center py-10">Loading menu...</p>;
@@ -135,10 +132,10 @@ export default function MenuSection() {
                           </span>
                           <button
                             onClick={() =>
-                              addToCart(
-                                item.name,
-                                parseFloat(String(item.price))
-                              )
+                              addToCart({
+                                ...item,
+                                price: parseFloat(String(item.price)),
+                              })
                             }
                             className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs"
                           >
