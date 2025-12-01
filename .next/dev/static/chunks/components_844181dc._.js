@@ -612,7 +612,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/Menu.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// components/MenuSection.js
 __turbopack_context__.s([
     "default",
     ()=>MenuSection
@@ -638,6 +637,7 @@ function MenuSection() {
                 try {
                     const res = await fetch(GAS_URL);
                     const data = await res.json();
+                    console.log("GAS DATA:", data);
                     setMenuData(Array.isArray(data[0]?.items) ? data : [
                         {
                             name: "Menu",
@@ -654,33 +654,33 @@ function MenuSection() {
             loadMenu();
         }
     }["MenuSection.useEffect"], []);
+    const formatPrice = (price)=>parseFloat(String(price)).toFixed(2);
     const scroll = (categoryId, direction)=>{
         const container = scrollRefs.current[categoryId];
         if (!container) return;
-        const scrollAmount = container.clientWidth * 0.6;
         container.scrollBy({
-            left: direction === "left" ? -scrollAmount : scrollAmount,
+            left: direction === "left" ? -container.clientWidth * 0.6 : container.clientWidth * 0.6,
             behavior: "smooth"
         });
     };
     const addToCart = (name, price)=>{
         console.log(`Added to cart: ${name} - $${price}`);
-    // Implement your cart logic here
+    // Implement cart logic here
     };
     if (loading) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
         className: "text-center py-10",
         children: "Loading menu..."
     }, void 0, false, {
         fileName: "[project]/components/Menu.tsx",
-        lineNumber: 50,
+        lineNumber: 70,
         columnNumber: 23
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-        className: "text-center text-red-500 py-10",
+        className: "text-center py-10 text-red-500",
         children: "Failed to load menu."
     }, void 0, false, {
         fileName: "[project]/components/Menu.tsx",
-        lineNumber: 53,
+        lineNumber: 73,
         columnNumber: 7
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -694,163 +694,155 @@ function MenuSection() {
                     children: "Our Menu"
                 }, void 0, false, {
                     fileName: "[project]/components/Menu.tsx",
-                    lineNumber: 62,
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    children: menuData.map((category)=>{
-                        const safeId = category.name.replace(/\s+/g, "-").toLowerCase();
-                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-full text-center mb-12",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-2xl font-semibold mb-4 text-gray-800",
-                                    children: category.name
-                                }, void 0, false, {
-                                    fileName: "[project]/components/Menu.tsx",
-                                    lineNumber: 68,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "relative flex items-center justify-center group",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>scroll(safeId, "left"),
-                                            className: "left-arrow absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md",
-                                            children: "←"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Menu.tsx",
-                                            lineNumber: 72,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            ref: (el)=>scrollRefs.current[safeId] = el,
-                                            id: `menu-${safeId}`,
-                                            className: "menu-scroll flex overflow-x-auto scroll-snap-x snap-mandatory gap-4 no-scrollbar px-2",
-                                            style: {
-                                                scrollBehavior: "smooth"
-                                            },
-                                            children: category.items.map((item, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-lg transform hover:-translate-y-1 transition snap-center min-w-[200px]",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative h-40 w-full",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                                src: item.imageUrl || "https://via.placeholder.com/400x300",
-                                                                alt: item.name,
-                                                                layout: "fill",
-                                                                objectFit: "cover"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/Menu.tsx",
-                                                                lineNumber: 91,
-                                                                columnNumber: 27
-                                                            }, this)
+                menuData.map((category)=>{
+                    const safeId = category.name.replace(/\s+/g, "-").toLowerCase();
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-full text-center mb-12",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-2xl font-semibold mb-4 text-gray-800",
+                                children: category.name
+                            }, void 0, false, {
+                                fileName: "[project]/components/Menu.tsx",
+                                lineNumber: 89,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative flex items-center justify-center group",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>scroll(safeId, "left"),
+                                        className: "absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md",
+                                        children: "←"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Menu.tsx",
+                                        lineNumber: 95,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        ref: (el)=>{
+                                            if (el) scrollRefs.current[safeId] = el;
+                                        },
+                                        className: "flex overflow-x-auto gap-4 px-2 scroll-smooth snap-x snap-mandatory",
+                                        children: category.items.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-lg transform hover:-translate-y-1 transition snap-center min-w-[200px]",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "relative h-40 w-full",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                            src: item.imageUrl || "https://via.placeholder.com/400x300",
+                                                            alt: item.name,
+                                                            fill: true,
+                                                            className: "object-cover"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Menu.tsx",
-                                                            lineNumber: 90,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "p-4 flex flex-col flex-grow",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                    className: "font-semibold text-lg mb-1",
-                                                                    children: item.name
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/components/Menu.tsx",
-                                                                    lineNumber: 102,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                    className: "text-gray-600 text-sm flex-grow",
-                                                                    children: item.description || ""
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/components/Menu.tsx",
-                                                                    lineNumber: 105,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "mt-3 flex items-center justify-between",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "font-bold text-indigo-600",
-                                                                            children: [
-                                                                                "$",
-                                                                                parseFloat(item.price).toFixed(2)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/components/Menu.tsx",
-                                                                            lineNumber: 109,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                            onClick: ()=>addToCart(item.name, parseFloat(item.price)),
-                                                                            className: "add-to-cart-btn bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs",
-                                                                            children: "Add"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/components/Menu.tsx",
-                                                                            lineNumber: 112,
-                                                                            columnNumber: 29
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/components/Menu.tsx",
-                                                                    lineNumber: 108,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/components/Menu.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 115,
                                                             columnNumber: 25
                                                         }, this)
-                                                    ]
-                                                }, idx, true, {
-                                                    fileName: "[project]/components/Menu.tsx",
-                                                    lineNumber: 86,
-                                                    columnNumber: 23
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Menu.tsx",
-                                            lineNumber: 79,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>scroll(safeId, "right"),
-                                            className: "right-arrow absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md",
-                                            children: "→"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Menu.tsx",
-                                            lineNumber: 126,
-                                            columnNumber: 19
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/Menu.tsx",
-                                    lineNumber: 71,
-                                    columnNumber: 17
-                                }, this)
-                            ]
-                        }, safeId, true, {
-                            fileName: "[project]/components/Menu.tsx",
-                            lineNumber: 67,
-                            columnNumber: 15
-                        }, this);
-                    })
-                }, void 0, false, {
-                    fileName: "[project]/components/Menu.tsx",
-                    lineNumber: 63,
-                    columnNumber: 9
-                }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/Menu.tsx",
+                                                        lineNumber: 114,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "p-4 flex flex-col flex-grow",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                                className: "font-semibold text-lg mb-1",
+                                                                children: item.name
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/Menu.tsx",
+                                                                lineNumber: 126,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-gray-600 text-sm flex-grow",
+                                                                children: item.description
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/Menu.tsx",
+                                                                lineNumber: 129,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "mt-3 flex items-center justify-between",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "font-bold text-indigo-600",
+                                                                        children: [
+                                                                            "$",
+                                                                            formatPrice(item.price)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/components/Menu.tsx",
+                                                                        lineNumber: 133,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        onClick: ()=>addToCart(item.name, parseFloat(String(item.price))),
+                                                                        className: "bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs",
+                                                                        children: "Add"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/Menu.tsx",
+                                                                        lineNumber: 136,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/components/Menu.tsx",
+                                                                lineNumber: 132,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/Menu.tsx",
+                                                        lineNumber: 125,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, item.name, true, {
+                                                fileName: "[project]/components/Menu.tsx",
+                                                lineNumber: 110,
+                                                columnNumber: 21
+                                            }, this))
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Menu.tsx",
+                                        lineNumber: 103,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>scroll(safeId, "right"),
+                                        className: "absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md",
+                                        children: "→"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Menu.tsx",
+                                        lineNumber: 154,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/Menu.tsx",
+                                lineNumber: 93,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, safeId, true, {
+                        fileName: "[project]/components/Menu.tsx",
+                        lineNumber: 88,
+                        columnNumber: 13
+                    }, this);
+                })
             ]
         }, void 0, true, {
             fileName: "[project]/components/Menu.tsx",
-            lineNumber: 61,
+            lineNumber: 81,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/Menu.tsx",
-        lineNumber: 57,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 }
