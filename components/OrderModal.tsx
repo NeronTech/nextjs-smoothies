@@ -39,9 +39,7 @@ export default function OrderModal() {
                 className="flex justify-between items-center"
               >
                 <div>
-                  <p className="font-semibold">
-                    {item.name} x {item.quantity}
-                  </p>
+                  <p className="font-semibold">{item.name}</p>
                   <p className="text-gray-500 text-sm">
                     ${item.price.toFixed(2)} each
                   </p>
@@ -53,6 +51,7 @@ export default function OrderModal() {
                   >
                     −
                   </button>
+                  <p className="font-semibold">{item.quantity}</p>
                   <button
                     onClick={() => increaseQuantity(item.name)}
                     className="text-green-500 font-bold px-2"

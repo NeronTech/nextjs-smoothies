@@ -246,12 +246,8 @@ function OrderModal() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "font-semibold",
-                                                children: [
-                                                    item.name,
-                                                    " x ",
-                                                    item.quantity
-                                                ]
-                                            }, void 0, true, {
+                                                children: item.name
+                                            }, void 0, false, {
                                                 fileName: "[project]/components/OrderModal.tsx",
                                                 lineNumber: 42,
                                                 columnNumber: 19
@@ -265,7 +261,7 @@ function OrderModal() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/OrderModal.tsx",
-                                                lineNumber: 45,
+                                                lineNumber: 43,
                                                 columnNumber: 19
                                             }, this)
                                         ]
@@ -283,7 +279,15 @@ function OrderModal() {
                                                 children: "−"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/OrderModal.tsx",
-                                                lineNumber: 50,
+                                                lineNumber: 48,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "font-semibold",
+                                                children: item.quantity
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/OrderModal.tsx",
+                                                lineNumber: 54,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -292,13 +296,13 @@ function OrderModal() {
                                                 children: "+"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/OrderModal.tsx",
-                                                lineNumber: 56,
+                                                lineNumber: 55,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/OrderModal.tsx",
-                                        lineNumber: 49,
+                                        lineNumber: 47,
                                         columnNumber: 17
                                     }, this)
                                 ]
@@ -315,7 +319,7 @@ function OrderModal() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/OrderModal.tsx",
-                            lineNumber: 65,
+                            lineNumber: 64,
                             columnNumber: 13
                         }, this)
                     ]
@@ -335,7 +339,7 @@ function OrderModal() {
                             className: "border p-2 rounded"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderModal.tsx",
-                            lineNumber: 70,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -346,13 +350,13 @@ function OrderModal() {
                             className: "border p-2 rounded"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderModal.tsx",
-                            lineNumber: 77,
+                            lineNumber: 76,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderModal.tsx",
-                    lineNumber: 69,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -363,12 +367,12 @@ function OrderModal() {
                         children: "Close"
                     }, void 0, false, {
                         fileName: "[project]/components/OrderModal.tsx",
-                        lineNumber: 87,
+                        lineNumber: 86,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/OrderModal.tsx",
-                    lineNumber: 86,
+                    lineNumber: 85,
                     columnNumber: 9
                 }, this)
             ]
