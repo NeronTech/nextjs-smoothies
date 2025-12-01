@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/NeronTech/Documents/dev/nextjs-seo-spa/components/PwaRegister.tsx"],"sourcesContent":["// components/PwaRegister.tsx (client component)\n'use client';\nimport React, { useEffect } from 'react';\n\nexport default function PwaRegister({ children }: { children: React.ReactNode }) {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      navigator.serviceWorker.register('/sw.js')\n        .then(reg => console.log('SW registered', reg))\n        .catch(err => console.warn('SW registration failed', err));\n    }\n  }, []);\n\n  return <>{children}</>;\n}\n"],"names":[],"mappings":"AAAA,gDAAgD;;;;;;AAEhD;;;AADA;;AAGe,SAAS,YAAY,EAAE,QAAQ,EAAiC;;IAC7E,IAAA,0KAAS;iCAAC;YACR,IAAI,mBAAmB,WAAW;gBAChC,UAAU,aAAa,CAAC,QAAQ,CAAC,UAC9B,IAAI;6CAAC,CAAA,MAAO,QAAQ,GAAG,CAAC,iBAAiB;4CACzC,KAAK;6CAAC,CAAA,MAAO,QAAQ,IAAI,CAAC,0BAA0B;;YACzD;QACF;gCAAG,EAAE;IAEL,qBAAO;kBAAG;;AACZ;GAVwB;KAAA"}}]
+}

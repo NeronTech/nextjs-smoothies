@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/NeronTech/Documents/dev/nextjs-seo-spa/app/services/page.tsx"],"sourcesContent":["export const metadata = { title: 'Services — My App', description: 'Our services' };\n\nexport default function Services() {\n  return (\n    <main className=\"min-h-screen p-8\">\n      <h1 className=\"text-3xl font-bold\">Services</h1>\n      <p className=\"mt-4\">List of services. Fully SEO friendly.</p>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;AAAO,MAAM,WAAW;IAAE,OAAO;IAAqB,aAAa;AAAe;AAEnE,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAG,WAAU;0BAAqB;;;;;;0BACnC,8OAAC;gBAAE,WAAU;0BAAO;;;;;;;;;;;;AAG1B"}}]
+}

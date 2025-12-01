@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/NeronTech/Documents/dev/nextjs-seo-spa/app/about/page.tsx"],"sourcesContent":["export const metadata = {\n  title: 'About — My App',\n  description: 'About page for My App',\n};\n\nexport default function About() {\n  return (\n    <main className=\"min-h-screen p-8\">\n      <h1 className=\"text-3xl font-bold\">About</h1>\n      <p className=\"mt-4\">This page is server-rendered for SEO.</p>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;AAAO,MAAM,WAAW;IACtB,OAAO;IACP,aAAa;AACf;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAG,WAAU;0BAAqB;;;;;;0BACnC,8OAAC;gBAAE,WAAU;0BAAO;;;;;;;;;;;;AAG1B"}}]
+}
