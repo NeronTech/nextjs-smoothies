@@ -1,8 +1,11 @@
-import Link from 'next/link';
-import Header from '../components/Header';
-import HeroSection from '../components/Hero';
-import FeatureSection from '../components/Feature';
-import MenuSection from '../components/Menu';
+import Link from "next/link";
+import Header from "../components/Header";
+import HeroSection from "../components/Hero";
+import FeatureSection from "../components/Feature";
+import MenuSection from "../components/Menu";
+import TestimonialsSection from "../components/Testimonials";
+import ContactSection from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -12,7 +15,10 @@ export default function Home() {
         <HeroSection />
         <FeatureSection />
         <MenuSection />
+        <TestimonialsSection />
+        <ContactSection />
       </main>
+      <Footer />
     </>
     // <main className="min-h-screen p-8">
     //   <header className="max-w-4xl mx-auto">
