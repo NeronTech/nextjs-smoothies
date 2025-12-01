@@ -5,7 +5,7 @@ const nextConfig = {
     appDir: true, // App Router
   },
   images: {
-    domains: ["readdy.ai", "via.placeholder.com"], // Add all external domains here
+    domains: ["readdy.ai", "via.placeholder.com", "picsum.photos"], // Add all external domains here
   },
 };
 

@@ -319,38 +319,93 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-'use client';
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-ssr] (ecmascript)");
+"use client";
 ;
 ;
+;
+const features = [
+    {
+        id: "ingredients",
+        label: "Fresh Ingredients",
+        icon: "ri-leaf-line"
+    },
+    {
+        id: "delivery",
+        label: "Quick Delivery",
+        icon: "ri-truck-line"
+    },
+    {
+        id: "custom",
+        label: "Custom Blends",
+        icon: "ri-settings-3-line"
+    },
+    {
+        id: "nutrition",
+        label: "Nutritional Info",
+        icon: "ri-heart-pulse-line"
+    },
+    {
+        id: "eco",
+        label: "Eco-Friendly",
+        icon: "ri-recycle-line"
+    }
+];
 function FeatureSection() {
     const [activeFeature, setActiveFeature] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("nutrition");
-    const features = [
-        {
-            id: "ingredients",
-            label: "Fresh Ingredients",
+    const cards = {
+        ingredients: {
+            title: "Fresh Ingredients",
+            desc: "We source the freshest fruits and vegetables to ensure every sip is full of flavor and nutrition.",
+            img: "https://picsum.photos/seed/ingredients/400/300",
+            gradient: "from-green-50 to-white",
+            iconBg: "from-green-500 to-emerald-500",
             icon: "ri-leaf-line"
         },
-        {
-            id: "delivery",
-            label: "Quick Delivery",
+        delivery: {
+            title: "Quick Delivery",
+            desc: "Your order arrives fresh and fast—because healthy choices should never wait!",
+            img: "https://picsum.photos/seed/delivery/400/300",
+            gradient: "from-blue-50 to-white",
+            iconBg: "from-blue-500 to-sky-500",
             icon: "ri-truck-line"
         },
-        {
-            id: "custom",
-            label: "Custom Blends",
+        custom: {
+            title: "Custom Blends",
+            desc: "Build your smoothie just the way you like it—choose your base, fruits, and toppings.",
+            img: "https://picsum.photos/seed/custom/400/300",
+            gradient: "from-yellow-50 to-white",
+            iconBg: "from-yellow-500 to-orange-400",
             icon: "ri-settings-3-line"
         },
-        {
-            id: "nutrition",
-            label: "Nutritional Info",
+        nutrition: {
+            title: "Nutritional Info",
+            desc: "Complete nutritional breakdown for every item. Track your health goals with confidence.",
+            img: "https://picsum.photos/seed/nutrition/400/300",
+            gradient: "from-gray-50 to-white",
+            iconBg: "from-red-500 to-orange-500",
             icon: "ri-heart-pulse-line"
         },
-        {
-            id: "eco",
-            label: "Eco-Friendly",
+        eco: {
+            title: "Eco-Friendly",
+            desc: "We use biodegradable cups, eco-safe packaging, and sustainable sourcing practices.",
+            img: "https://picsum.photos/seed/eco/400/300",
+            gradient: "from-emerald-50 to-white",
+            iconBg: "from-emerald-500 to-green-400",
             icon: "ri-recycle-line"
         }
-    ];
+    };
+    // Auto-next feature every 5 seconds
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const interval = setInterval(()=>{
+            const currentIndex = features.findIndex((f)=>f.id === activeFeature);
+            const nextIndex = (currentIndex + 1) % features.length;
+            setActiveFeature(features[nextIndex].id);
+        }, 5000);
+        return ()=>clearInterval(interval);
+    }, [
+        activeFeature
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "py-20 bg-white",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -365,12 +420,12 @@ function FeatureSection() {
                                 className: "ri-star-line text-2xl text-purple-600"
                             }, void 0, false, {
                                 fileName: "[project]/components/Feature.tsx",
-                                lineNumber: 21,
+                                lineNumber: 76,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Feature.tsx",
-                            lineNumber: 20,
+                            lineNumber: 75,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -379,7 +434,7 @@ function FeatureSection() {
                                 "Keep everything",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                     fileName: "[project]/components/Feature.tsx",
-                                    lineNumber: 25,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this),
                                 "in",
@@ -392,19 +447,19 @@ function FeatureSection() {
                                             className: "absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-ping scale-90"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Feature.tsx",
-                                            lineNumber: 29,
+                                            lineNumber: 84,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Feature.tsx",
-                                    lineNumber: 27,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Feature.tsx",
-                            lineNumber: 23,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -412,13 +467,13 @@ function FeatureSection() {
                             children: "Everything you need for a healthy lifestyle, delivered fresh to your door"
                         }, void 0, false, {
                             fileName: "[project]/components/Feature.tsx",
-                            lineNumber: 32,
+                            lineNumber: 87,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Feature.tsx",
-                    lineNumber: 19,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -433,74 +488,32 @@ function FeatureSection() {
                                         className: `${feature.icon} mr-2`
                                     }, void 0, false, {
                                         fileName: "[project]/components/Feature.tsx",
-                                        lineNumber: 51,
+                                        lineNumber: 106,
                                         columnNumber: 17
                                     }, this),
                                     feature.label
                                 ]
                             }, feature.id, true, {
                                 fileName: "[project]/components/Feature.tsx",
-                                lineNumber: 42,
+                                lineNumber: 97,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/Feature.tsx",
-                        lineNumber: 40,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/Feature.tsx",
-                    lineNumber: 39,
+                    lineNumber: 94,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "max-w-4xl mx-auto relative",
                     children: features.map((feature)=>{
-                        const cards = {
-                            ingredients: {
-                                title: "Fresh Ingredients",
-                                desc: "We source the freshest fruits and vegetables to ensure every sip is full of flavor and nutrition.",
-                                img: "https://readdy.ai/api/search-image?query=Fresh%20organic%20fruits%20and%20vegetables%20arranged%20beautifully%20on%20a%20wooden%20cutting%20board%2C%20vibrant%20colors%2C%20natural%20lighting%2C%20healthy%20ingredients%20for%20smoothies%2C%20clean%20background%2C%20professional%20food%20photography%2C%20high%20quality%2C%20appetizing%20presentation&width=400&height=300&seq=feature1&orientation=landscape",
-                                gradient: "from-green-50 to-white",
-                                iconBg: "from-green-500 to-emerald-500",
-                                icon: "ri-leaf-line"
-                            },
-                            delivery: {
-                                title: "Quick Delivery",
-                                desc: "Your order arrives fresh and fast—because healthy choices should never wait!",
-                                img: "https://readdy.ai/api/search-image?query=Modern%20delivery%20service%20with%20fresh%20smoothies%20in%20eco-friendly%20packaging%2C%20delivery%20person%20on%20bicycle%2C%20urban%20setting%2C%20professional%20service%2C%20clean%20and%20modern%20aesthetic%2C%20high%20quality%20photography&width=400&height=300&seq=feature2&orientation=landscape",
-                                gradient: "from-blue-50 to-white",
-                                iconBg: "from-blue-500 to-sky-500",
-                                icon: "ri-truck-line"
-                            },
-                            custom: {
-                                title: "Custom Blends",
-                                desc: "Build your smoothie just the way you like it—choose your base, fruits, and toppings.",
-                                img: "https://readdy.ai/api/search-image?query=Colorful%20smoothie%20ingredients%20laid%20out%20for%20customization%2C%20various%20fruits%2C%20vegetables%2C%20protein%20powders%2C%20superfoods%2C%20organized%20display%2C%20bright%20clean%20background%2C%20professional%20food%20styling&width=400&height=300&seq=feature3&orientation=landscape",
-                                gradient: "from-yellow-50 to-white",
-                                iconBg: "from-yellow-500 to-orange-400",
-                                icon: "ri-settings-3-line"
-                            },
-                            nutrition: {
-                                title: "Nutritional Info",
-                                desc: "Complete nutritional breakdown for every item. Track your health goals with confidence.",
-                                img: "https://readdy.ai/api/search-image?query=Healthy%20smoothie%20with%20nutritional%20information%20display%2C%20calories%20and%20vitamins%20shown%2C%20health-focused%20presentation%2C%20clean%20modern%20design%2C%20professional%20food%20photography%2C%20wellness%20theme&width=400&height=300&seq=feature4&orientation=landscape",
-                                gradient: "from-gray-50 to-white",
-                                iconBg: "from-red-500 to-orange-500",
-                                icon: "ri-heart-pulse-line"
-                            },
-                            eco: {
-                                title: "Eco-Friendly",
-                                desc: "We use biodegradable cups, eco-safe packaging, and sustainable sourcing practices.",
-                                img: "https://readdy.ai/api/search-image?query=Eco-friendly%20smoothie%20packaging%20made%20from%20sustainable%20materials%2C%20biodegradable%20cups%20and%20straws%2C%20green%20environmental%20theme%2C%20clean%20modern%20design%2C%20professional%20product%20photography&width=400&height=300&seq=feature5&orientation=landscape",
-                                gradient: "from-emerald-50 to-white",
-                                iconBg: "from-emerald-500 to-green-400",
-                                icon: "ri-recycle-line"
-                            }
-                        };
                         const card = cards[feature.id];
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: `feature-card transition-all duration-500 ${activeFeature === feature.id ? "block" : "hidden"}`,
+                            className: `feature-card transition-opacity duration-700 ${activeFeature === feature.id ? "opacity-100 block" : "opacity-0 hidden"}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `bg-gradient-to-br ${card.gradient} rounded-3xl p-8 md:p-12 shadow-xl`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -511,15 +524,15 @@ function FeatureSection() {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `inline-flex items-center justify-center w-16 h-16 ${card.iconBg} rounded-2xl mb-6`,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                        className: `${card.icon} text-2xl text-white`
+                                                        className: `${card.icon} text-8xl text-black`
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Feature.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 134,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Feature.tsx",
-                                                    lineNumber: 117,
+                                                    lineNumber: 131,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -527,7 +540,7 @@ function FeatureSection() {
                                                     children: card.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Feature.tsx",
-                                                    lineNumber: 122,
+                                                    lineNumber: 136,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -535,61 +548,63 @@ function FeatureSection() {
                                                     children: card.desc
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Feature.tsx",
-                                                    lineNumber: 125,
+                                                    lineNumber: 139,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Feature.tsx",
-                                            lineNumber: 116,
+                                            lineNumber: 130,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            className: "relative w-full h-64 lg:h-80",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                src: card.img,
                                                 alt: card.title,
-                                                className: "w-full h-full object-cover transition-all duration-500",
-                                                src: card.img
+                                                fill: true,
+                                                className: "object-cover rounded-2xl transition-all duration-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Feature.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 142,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Feature.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 141,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Feature.tsx",
-                                    lineNumber: 115,
+                                    lineNumber: 129,
                                     columnNumber: 19
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Feature.tsx",
-                                lineNumber: 112,
+                                lineNumber: 126,
                                 columnNumber: 17
                             }, this)
                         }, feature.id, false, {
                             fileName: "[project]/components/Feature.tsx",
-                            lineNumber: 106,
+                            lineNumber: 118,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/Feature.tsx",
-                    lineNumber: 59,
+                    lineNumber: 114,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/Feature.tsx",
-            lineNumber: 17,
+            lineNumber: 72,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/Feature.tsx",
-        lineNumber: 16,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }

@@ -1,16 +1,71 @@
-'use client';
-import { useState } from "react";
+"use client";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+const features = [
+  { id: "ingredients", label: "Fresh Ingredients", icon: "ri-leaf-line" },
+  { id: "delivery", label: "Quick Delivery", icon: "ri-truck-line" },
+  { id: "custom", label: "Custom Blends", icon: "ri-settings-3-line" },
+  { id: "nutrition", label: "Nutritional Info", icon: "ri-heart-pulse-line" },
+  { id: "eco", label: "Eco-Friendly", icon: "ri-recycle-line" },
+];
 
 export default function FeatureSection() {
   const [activeFeature, setActiveFeature] = useState("nutrition");
 
-  const features = [
-    { id: "ingredients", label: "Fresh Ingredients", icon: "ri-leaf-line" },
-    { id: "delivery", label: "Quick Delivery", icon: "ri-truck-line" },
-    { id: "custom", label: "Custom Blends", icon: "ri-settings-3-line" },
-    { id: "nutrition", label: "Nutritional Info", icon: "ri-heart-pulse-line" },
-    { id: "eco", label: "Eco-Friendly", icon: "ri-recycle-line" },
-  ];
+  const cards: Record<string, any> = {
+    ingredients: {
+      title: "Fresh Ingredients",
+      desc: "We source the freshest fruits and vegetables to ensure every sip is full of flavor and nutrition.",
+      img: "https://picsum.photos/seed/ingredients/400/300",
+      gradient: "from-green-50 to-white",
+      iconBg: "from-green-500 to-emerald-500",
+      icon: "ri-leaf-line",
+    },
+    delivery: {
+      title: "Quick Delivery",
+      desc: "Your order arrives fresh and fast—because healthy choices should never wait!",
+      img: "https://picsum.photos/seed/delivery/400/300",
+      gradient: "from-blue-50 to-white",
+      iconBg: "from-blue-500 to-sky-500",
+      icon: "ri-truck-line",
+    },
+    custom: {
+      title: "Custom Blends",
+      desc: "Build your smoothie just the way you like it—choose your base, fruits, and toppings.",
+      img: "https://picsum.photos/seed/custom/400/300",
+      gradient: "from-yellow-50 to-white",
+      iconBg: "from-yellow-500 to-orange-400",
+      icon: "ri-settings-3-line",
+    },
+    nutrition: {
+      title: "Nutritional Info",
+      desc: "Complete nutritional breakdown for every item. Track your health goals with confidence.",
+      img: "https://picsum.photos/seed/nutrition/400/300",
+      gradient: "from-gray-50 to-white",
+      iconBg: "from-red-500 to-orange-500",
+      icon: "ri-heart-pulse-line",
+    },
+    eco: {
+      title: "Eco-Friendly",
+      desc: "We use biodegradable cups, eco-safe packaging, and sustainable sourcing practices.",
+      img: "https://picsum.photos/seed/eco/400/300",
+      gradient: "from-emerald-50 to-white",
+      iconBg: "from-emerald-500 to-green-400",
+      icon: "ri-recycle-line",
+    },
+  };
+
+  // Auto-next feature every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentIndex = features.findIndex((f) => f.id === activeFeature);
+      const nextIndex = (currentIndex + 1) % features.length;
+      setActiveFeature(features[nextIndex].id);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [activeFeature]);
 
   return (
     <section className="py-20 bg-white">
@@ -57,56 +112,15 @@ export default function FeatureSection() {
 
         {/* Feature Cards */}
         <div className="max-w-4xl mx-auto relative">
-          {/* Feature Cards */}
           {features.map((feature) => {
-            const cards = {
-              ingredients: {
-                title: "Fresh Ingredients",
-                desc: "We source the freshest fruits and vegetables to ensure every sip is full of flavor and nutrition.",
-                img: "https://readdy.ai/api/search-image?query=Fresh%20organic%20fruits%20and%20vegetables%20arranged%20beautifully%20on%20a%20wooden%20cutting%20board%2C%20vibrant%20colors%2C%20natural%20lighting%2C%20healthy%20ingredients%20for%20smoothies%2C%20clean%20background%2C%20professional%20food%20photography%2C%20high%20quality%2C%20appetizing%20presentation&width=400&height=300&seq=feature1&orientation=landscape",
-                gradient: "from-green-50 to-white",
-                iconBg: "from-green-500 to-emerald-500",
-                icon: "ri-leaf-line",
-              },
-              delivery: {
-                title: "Quick Delivery",
-                desc: "Your order arrives fresh and fast—because healthy choices should never wait!",
-                img: "https://readdy.ai/api/search-image?query=Modern%20delivery%20service%20with%20fresh%20smoothies%20in%20eco-friendly%20packaging%2C%20delivery%20person%20on%20bicycle%2C%20urban%20setting%2C%20professional%20service%2C%20clean%20and%20modern%20aesthetic%2C%20high%20quality%20photography&width=400&height=300&seq=feature2&orientation=landscape",
-                gradient: "from-blue-50 to-white",
-                iconBg: "from-blue-500 to-sky-500",
-                icon: "ri-truck-line",
-              },
-              custom: {
-                title: "Custom Blends",
-                desc: "Build your smoothie just the way you like it—choose your base, fruits, and toppings.",
-                img: "https://readdy.ai/api/search-image?query=Colorful%20smoothie%20ingredients%20laid%20out%20for%20customization%2C%20various%20fruits%2C%20vegetables%2C%20protein%20powders%2C%20superfoods%2C%20organized%20display%2C%20bright%20clean%20background%2C%20professional%20food%20styling&width=400&height=300&seq=feature3&orientation=landscape",
-                gradient: "from-yellow-50 to-white",
-                iconBg: "from-yellow-500 to-orange-400",
-                icon: "ri-settings-3-line",
-              },
-              nutrition: {
-                title: "Nutritional Info",
-                desc: "Complete nutritional breakdown for every item. Track your health goals with confidence.",
-                img: "https://readdy.ai/api/search-image?query=Healthy%20smoothie%20with%20nutritional%20information%20display%2C%20calories%20and%20vitamins%20shown%2C%20health-focused%20presentation%2C%20clean%20modern%20design%2C%20professional%20food%20photography%2C%20wellness%20theme&width=400&height=300&seq=feature4&orientation=landscape",
-                gradient: "from-gray-50 to-white",
-                iconBg: "from-red-500 to-orange-500",
-                icon: "ri-heart-pulse-line",
-              },
-              eco: {
-                title: "Eco-Friendly",
-                desc: "We use biodegradable cups, eco-safe packaging, and sustainable sourcing practices.",
-                img: "https://readdy.ai/api/search-image?query=Eco-friendly%20smoothie%20packaging%20made%20from%20sustainable%20materials%2C%20biodegradable%20cups%20and%20straws%2C%20green%20environmental%20theme%2C%20clean%20modern%20design%2C%20professional%20product%20photography&width=400&height=300&seq=feature5&orientation=landscape",
-                gradient: "from-emerald-50 to-white",
-                iconBg: "from-emerald-500 to-green-400",
-                icon: "ri-recycle-line",
-              },
-            };
-            const card = (cards as any)[feature.id];
+            const card = cards[feature.id];
             return (
               <div
                 key={feature.id}
-                className={`feature-card transition-all duration-500 ${
-                  activeFeature === feature.id ? "block" : "hidden"
+                className={`feature-card transition-opacity duration-700 ${
+                  activeFeature === feature.id
+                    ? "opacity-100 block"
+                    : "opacity-0 hidden"
                 }`}
               >
                 <div
@@ -117,18 +131,19 @@ export default function FeatureSection() {
                       <div
                         className={`inline-flex items-center justify-center w-16 h-16 ${card.iconBg} rounded-2xl mb-6`}
                       >
-                        <i className={`${card.icon} text-2xl text-white`}></i>
+                        <i className={`${card.icon} text-8xl text-black`}></i>
                       </div>
                       <h3 className="text-3xl font-bold text-gray-900 mb-4">
                         {card.title}
                       </h3>
                       <p className="text-lg text-gray-600 mb-6">{card.desc}</p>
                     </div>
-                    <div>
-                      <img
-                        alt={card.title}
-                        className="w-full h-full object-cover transition-all duration-500"
+                    <div className="relative w-full h-64 lg:h-80">
+                      <Image
                         src={card.img}
+                        alt={card.title}
+                        fill
+                        className="object-cover rounded-2xl transition-all duration-500"
                       />
                     </div>
                   </div>
