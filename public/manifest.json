@@ -1,7 +1,7 @@
 {
-  "name": "NextJS SEO SPA",
-  "short_name": "NextSPA",
-  "description": "Next.js SPA with PWA, SEO, GAS backend",
+  "name": "Smoothies & More",
+  "short_name": "SMOOTHIES",
+  "description": "SMOOTHIES & MORE is your go-to app for delicious smoothie recipes and healthy living tips.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
