@@ -4,6 +4,7 @@ import PwaRegister from "../components/PwaRegister";
 import PageLoader from "../components/PageLoader";
 import { CartProvider } from "../context/CartContext";
 import OrderModal from '../components/OrderModal';
+import IosA2HS from "../components/IosA2HS";
 
 export const metadata = {
   title: "Smoothies & More",
@@ -60,6 +61,7 @@ export default function RootLayout({
         <CartProvider>
           <PageLoader />
           <PwaRegister>{children}</PwaRegister>
+          <IosA2HS />
           <OrderModal />
         </CartProvider>
       </body>
