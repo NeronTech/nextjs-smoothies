@@ -2,6 +2,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import PwaInstallModal from "./PwaInstallModal";
 
 export default function PwaRegister({
   children,
@@ -10,6 +11,7 @@ export default function PwaRegister({
 }) {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showBanner, setShowBanner] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
@@ -25,13 +27,30 @@ export default function PwaRegister({
       setShowBanner(true);
     };
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    // Detect if app is installed (iOS or Desktop)
+    const handleAppInstalled = () => {
+      console.log("App installed!");
+      // show modal after 5 seconds
+      setTimeout(() => setShowModal(true), 5000);
+    };
 
-    return () =>
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    // iOS detection
+    if ((window.navigator as any).standalone) {
+      if ("standalone" in navigator && navigator.standalone) {
+        setTimeout(() => setShowModal(true), 5000);
+      }
+    }
+
+    return () => {
+      window.removeEventListener("appinstalled", handleAppInstalled);
       window.removeEventListener(
         "beforeinstallprompt",
         handleBeforeInstallPrompt
       );
+    };
   }, []);
 
   const handleInstallClick = async () => {
@@ -39,7 +58,10 @@ export default function PwaRegister({
     deferredPrompt.prompt();
 
     const choiceResult = await deferredPrompt.userChoice;
-    console.log("User choice:", choiceResult.outcome);
+    if (choiceResult.outcome === "accepted") {
+      setTimeout(() => setShowModal(true), 5000);
+      console.log("User choice:", choiceResult.outcome);
+    }
 
     setDeferredPrompt(null);
     setShowBanner(false);
@@ -59,6 +81,7 @@ export default function PwaRegister({
           </button>
         </div>
       )}
+      <PwaInstallModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }

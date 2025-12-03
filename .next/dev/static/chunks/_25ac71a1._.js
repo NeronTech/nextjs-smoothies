@@ -1,4 +1,154 @@
 (globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/components/PwaInstallModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+// components/PwaInstallModal.tsx
+__turbopack_context__.s([
+    "default",
+    ()=>PwaInstallModal
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+function PwaInstallModal({ isOpen, onClose }) {
+    _s();
+    if (!isOpen) return null;
+    const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "PwaInstallModal.useEffect": ()=>{
+            const timer = setTimeout({
+                "PwaInstallModal.useEffect.timer": ()=>{
+                    setIsModalOpen(true); // open the modal after 3 seconds
+                }
+            }["PwaInstallModal.useEffect.timer"], 3000);
+            return ({
+                "PwaInstallModal.useEffect": ()=>clearTimeout(timer)
+            })["PwaInstallModal.useEffect"]; // cleanup on unmount
+        }
+    }["PwaInstallModal.useEffect"], []);
+    const closeModal = ()=>setIsModalOpen(false);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "fixed inset-0 z-50 flex items-center justify-center bg-black/50",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-white rounded-xl shadow-lg p-6 w-11/12 max-w-md",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    className: "text-2xl font-bold text-gray-900 mb-4 text-center",
+                    children: "Welcome!"
+                }, void 0, false, {
+                    fileName: "[project]/components/PwaInstallModal.tsx",
+                    lineNumber: 30,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "text-gray-700 mb-6 text-center",
+                    children: "Your app is installed. What would you like to do next?"
+                }, void 0, false, {
+                    fileName: "[project]/components/PwaInstallModal.tsx",
+                    lineNumber: 33,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex flex-col space-y-3",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                            href: "#register",
+                            className: "px-4 py-2 bg-purple-600 text-white rounded-full text-center hover:bg-purple-700 transition shadow-md",
+                            onClick: ()=>{
+                                setIsModalOpen(true), onClose();
+                            },
+                            children: "Create Account"
+                        }, void 0, false, {
+                            fileName: "[project]/components/PwaInstallModal.tsx",
+                            lineNumber: 37,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                            href: "#menu",
+                            className: "px-4 py-2 bg-green-600 text-white rounded-full text-center hover:bg-green-700 transition shadow-md",
+                            onClick: onClose,
+                            children: "Just Order For Now"
+                        }, void 0, false, {
+                            fileName: "[project]/components/PwaInstallModal.tsx",
+                            lineNumber: 44,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center my-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
+                                    className: "flex-grow border-gray-300"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 54,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "px-2 text-gray-500 text-sm",
+                                    children: "Or Already have an account?"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 55,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
+                                    className: "flex-grow border-gray-300"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 58,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/PwaInstallModal.tsx",
+                            lineNumber: 53,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: onClose,
+                            className: "px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md",
+                            children: "Login"
+                        }, void 0, false, {
+                            fileName: "[project]/components/PwaInstallModal.tsx",
+                            lineNumber: 61,
+                            columnNumber: 11
+                        }, this),
+                        isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RegistrationModal, {
+                            onClose: closeModal
+                        }, void 0, false, {
+                            fileName: "[project]/components/PwaInstallModal.tsx",
+                            lineNumber: 68,
+                            columnNumber: 27
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/PwaInstallModal.tsx",
+                    lineNumber: 36,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/components/PwaInstallModal.tsx",
+            lineNumber: 29,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/components/PwaInstallModal.tsx",
+        lineNumber: 28,
+        columnNumber: 5
+    }, this);
+}
+_s(PwaInstallModal, "3tdItJMdYo8BCtZ2aawBhgRLyyM=");
+_c = PwaInstallModal;
+var _c;
+__turbopack_context__.k.register(_c, "PwaInstallModal");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/components/PwaRegister.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -9,9 +159,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PwaInstallModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/PwaInstallModal.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 function PwaRegister({ children }) {
@@ -35,13 +187,26 @@ function PwaRegister({ children }) {
                     setShowBanner(true);
                 }
             }["PwaRegister.useEffect.handleBeforeInstallPrompt"];
+            // Detect if app is installed (iOS or Desktop)
             const handleAppInstalled = {
-                "PwaRegister.useEffect.handleAppInstalled": ()=>setShowModal(true)
+                "PwaRegister.useEffect.handleAppInstalled": ()=>{
+                    console.log("App installed!");
+                    // show modal after 5 seconds
+                    setTimeout({
+                        "PwaRegister.useEffect.handleAppInstalled": ()=>setShowModal(true)
+                    }["PwaRegister.useEffect.handleAppInstalled"], 5000);
+                }
             }["PwaRegister.useEffect.handleAppInstalled"];
             window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
             window.addEventListener("appinstalled", handleAppInstalled);
             // iOS detection
-            if (window.navigator.standalone) setShowModal(true);
+            if (window.navigator.standalone) {
+                if ("standalone" in navigator && navigator.standalone) {
+                    setTimeout({
+                        "PwaRegister.useEffect": ()=>setShowModal(true)
+                    }["PwaRegister.useEffect"], 5000);
+                }
+            }
             return ({
                 "PwaRegister.useEffect": ()=>{
                     window.removeEventListener("appinstalled", handleAppInstalled);
@@ -54,8 +219,10 @@ function PwaRegister({ children }) {
         if (!deferredPrompt) return;
         deferredPrompt.prompt();
         const choiceResult = await deferredPrompt.userChoice;
-        if (choiceResult.outcome === "accepted") setShowModal(true);
-        console.log("User choice:", choiceResult.outcome);
+        if (choiceResult.outcome === "accepted") {
+            setTimeout(()=>setShowModal(true), 5000);
+            console.log("User choice:", choiceResult.outcome);
+        }
         setDeferredPrompt(null);
         setShowBanner(false);
     };
@@ -70,13 +237,21 @@ function PwaRegister({ children }) {
                     children: "📱 Download App Now"
                 }, void 0, false, {
                     fileName: "[project]/components/PwaRegister.tsx",
-                    lineNumber: 64,
+                    lineNumber: 76,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/PwaRegister.tsx",
-                lineNumber: 63,
+                lineNumber: 75,
                 columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PwaInstallModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                isOpen: showModal,
+                onClose: ()=>setShowModal(false)
+            }, void 0, false, {
+                fileName: "[project]/components/PwaRegister.tsx",
+                lineNumber: 84,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true);
@@ -924,4 +1099,4 @@ else {
 }),
 ]);
 
-//# sourceMappingURL=_211904ed._.js.map
+//# sourceMappingURL=_25ac71a1._.js.map
