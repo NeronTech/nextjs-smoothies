@@ -1,6 +1,7 @@
 // context/CartContext.tsx
 "use client";
 import { createContext, useContext, useState, ReactNode } from "react";
+import Toast from "../components/Toast";
 
 export interface CartItem {
   name: string;
@@ -31,31 +32,50 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isOrderModalOpen, setOrderModalOpen] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+
+  // Function to show toast
+  const showToast = (
+    message: string,
+    type: "success" | "error" = "success"
+  ) => {
+    setToast({ message, type });
+  };
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prev) => {
       const existing = prev.find((i) => i.name === item.name);
       if (existing) {
+        showToast(`${item.name} quantity increased`, "success");
         return prev.map((i) =>
           i.name === item.name ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
+      showToast(`${item.name} added to cart`, "success");
       return [...prev, { ...item, quantity: 1 }];
     });
   };
 
   const increaseQuantity = (name: string) => {
     setCart((prev) =>
-      prev.map((i) =>
-        i.name === name ? { ...i, quantity: i.quantity + 1 } : i
-      )
+      prev.map((i) => {
+        if (i.name === name) showToast(`${name} quantity increased`, "success");
+        return i.name === name ? { ...i, quantity: i.quantity + 1 } : i;
+      })
     );
   };
 
   const decreaseQuantity = (name: string) => {
     setCart((prev) =>
       prev
-        .map((i) => (i.name === name ? { ...i, quantity: i.quantity - 1 } : i))
+        .map((i) => {
+          if (i.name === name)
+            showToast(`${name} quantity decreased`, "success");
+          return i.name === name ? { ...i, quantity: i.quantity - 1 } : i;
+        })
         .filter((i) => i.quantity > 0)
     );
   };
@@ -81,6 +101,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </CartContext.Provider>
   );
 };
