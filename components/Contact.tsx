@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Toast from "./Toast";
 
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwvoMt2Tz3JSdWwo29cod-ru0XpGp3IDxZ5xnd-CAVZ4lc4joD8SBnKGeDKMcgRVwi6/exec"; // replace with your GAS URL
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbwvoMt2Tz3JSdWwo29cod-ru0XpGp3IDxZ5xnd-CAVZ4lc4joD8SBnKGeDKMcgRVwi6/exec"; // replace with your GAS URL
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,10 @@ export default function ContactSection() {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,7 +32,8 @@ export default function ContactSection() {
     const { name, email, message } = formData;
 
     if (!name || !email || !message) {
-      alert("Please fill all required fields."); // or use your showToast
+      // alert("Please fill all required fields."); // or use your showToast
+      setToast({ message: "Please fill all required fields.", type: "error" });
       return;
     }
 
@@ -46,11 +53,16 @@ export default function ContactSection() {
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      alert("Message sent. We will get back to you soon!"); // showToast replacement
+      // alert("Message sent. We will get back to you soon!"); // showToast replacement
+      setToast({
+        message: "Message sent. We will get back to you soon!",
+        type: "success",
+      });
     } catch (err: any) {
       console.error(err);
       setStatus("error");
-      alert("❌ Request failed: " + err.message); // showMsg replacement
+      // alert("❌ Request failed: " + err.message); // showMsg replacement
+      setToast({ message: "❌ Request failed: " + err.message, type: "error" });
     } finally {
       setTimeout(() => setStatus("idle"), 3000);
     }
@@ -201,6 +213,14 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+      {/* Toast */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 }

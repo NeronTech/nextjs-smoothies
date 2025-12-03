@@ -3,7 +3,7 @@ import "./globals.css";
 import PwaRegister from "../components/PwaRegister";
 import PageLoader from "../components/PageLoader";
 import { CartProvider } from "../context/CartContext";
-import OrderModal from '../components/OrderModal';
+import OrderModal from "../components/OrderModal";
 import IosA2HS from "../components/IosA2HS";
 
 export const metadata = {
@@ -48,13 +48,6 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
           rel="stylesheet"
         />
-
-        {/* Toastr */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-        />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       </head>
 
       <body className="bg-gradient-to-b from-white to-gray-50 font-sans">

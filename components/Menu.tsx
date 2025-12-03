@@ -32,7 +32,7 @@ export default function MenuSection() {
       try {
         const res = await fetch(GAS_URL);
         const data = await res.json();
-        console.log("GAS DATA:", data);
+        // console.log("GAS DATA:", data);
 
         setMenuData(
           Array.isArray(data[0]?.items) ? data : [{ name: "Menu", items: data }]
