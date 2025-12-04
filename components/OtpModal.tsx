@@ -1,5 +1,5 @@
-// components/OtpModal.tsx
 "use client";
+
 import { useCart } from "../context/CartContext";
 import { useForm } from "react-hook-form";
 
@@ -8,14 +8,8 @@ interface OtpFormData {
 }
 
 export default function OtpModal() {
-  const {
-    isOtpModalOpen,
-    closeOtpModal,
-    phone,
-    email,
-    validateOtp,
-    generateOtp,
-  } = useCart();
+  const { isOtpModalOpen, phone, email, validateOtp } = useCart();
+
   const {
     register,
     handleSubmit,
@@ -23,7 +17,12 @@ export default function OtpModal() {
   } = useForm<OtpFormData>();
 
   const onSubmit = (data: OtpFormData) => {
-    if (!validateOtp(data.otp)) alert("Invalid OTP");
+    const isValid = validateOtp(data.otp);
+    if (!isValid) {
+      alert("Invalid OTP");
+    }
+    // ✅ Don't call openOrderAddressModal or closeOtpModal here
+    // validateOtp() already handles it
   };
 
   if (!isOtpModalOpen) return null;
@@ -55,14 +54,14 @@ export default function OtpModal() {
             <button
               type="button"
               className="px-4 py-2 bg-gray-300 rounded"
-              onClick={() => closeOtpModal()}
+              onClick={() => validateOtp("cancel")}
             >
               Cancel
             </button>
             <button
               type="button"
               className="px-4 py-2 bg-blue-400 text-white rounded"
-              onClick={() => generateOtp(phone, email)}
+              onClick={() => validateOtp("resend")}
             >
               Resend OTP
             </button>

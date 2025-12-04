@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/google.maps": "^3.58.1",
     "next": "^16.0.3",
     "next-sitemap": "^4.2.3",
     "react": "^19.2.0",

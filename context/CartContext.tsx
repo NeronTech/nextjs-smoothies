@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import Toast from "../components/Toast";
 import { useRouter } from "next/navigation";
+import OrderAddressModal from "../components/OrderAddressModal";
 
 export interface CartItem {
   name: string;
@@ -33,6 +34,19 @@ interface CartContextType {
   validateOtp: (input: string) => boolean;
   phone: string;
   email?: string;
+  isOrderAddressModalOpen: boolean;
+  openOrderAddressModal: () => void;
+  closeOrderAddressModal: () => void;
+  address: {
+    address: string;
+    coordinates: { lat: number; lng: number };
+  } | null;
+  saveAddress: (
+    data: {
+      address: string;
+      coordinates: { lat: number; lng: number };
+    } | null
+  ) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -57,6 +71,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const router = useRouter();
+  const [isOrderAddressModalOpen, setOrderAddressModalOpen] = useState(false);
+  const [address, setAddress] = useState<{
+    address: string;
+    coordinates: { lat: number; lng: number };
+  } | null>(null);
 
   // Function to show toast
   const showToast = (
@@ -116,6 +135,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const openOtpModal = () => setOtpModalOpen(true);
   const closeOtpModal = () => setOtpModalOpen(false);
 
+  const openOrderAddressModal = () => setOrderAddressModalOpen(true);
+  const closeOrderAddressModal = () => setOrderAddressModalOpen(false);
+
   const generateOtp = (phoneInput: string, emailInput?: string) => {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
     setOtp(newOtp);
@@ -126,11 +148,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const validateOtp = (input: string) => {
     if (input === otp) {
-      closeOtpModal();
-      router.push("/order-success"); // redirect to next screen
+      closeOtpModal(); // Close OTP modal
+      openOrderAddressModal(); // ⬅️ Show your address modal
       return true;
     }
     return false;
+  };
+
+  const saveAddress = (data: typeof address) => {
+    setAddress(data);
+    console.log("Saved Address:", data);
   };
 
   return (
@@ -158,6 +185,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         validateOtp,
         phone,
         email,
+        isOrderAddressModalOpen,
+        openOrderAddressModal,
+        closeOrderAddressModal,
+        address,
+        saveAddress,
       }}
     >
       {children}
@@ -168,6 +200,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           onClose={() => setToast(null)}
         />
       )}
+      {isOrderAddressModalOpen && <OrderAddressModal />}
     </CartContext.Provider>
   );
 };

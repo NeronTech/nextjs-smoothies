@@ -580,6 +580,263 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/hooks/useLoadGoogleMaps.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>useLoadGoogleMaps
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var _s = __turbopack_context__.k.signature();
+;
+function useLoadGoogleMaps() {
+    _s();
+    const [loaded, setLoaded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useLoadGoogleMaps.useEffect": ()=>{
+            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+            ;
+            const checkGoogle = {
+                "useLoadGoogleMaps.useEffect.checkGoogle": ()=>typeof google !== "undefined"
+            }["useLoadGoogleMaps.useEffect.checkGoogle"];
+            if (checkGoogle()) {
+                setLoaded(true);
+            } else {
+                const interval = setInterval({
+                    "useLoadGoogleMaps.useEffect.interval": ()=>{
+                        if (checkGoogle()) {
+                            setLoaded(true);
+                            clearInterval(interval);
+                        }
+                    }
+                }["useLoadGoogleMaps.useEffect.interval"], 100);
+                return ({
+                    "useLoadGoogleMaps.useEffect": ()=>clearInterval(interval)
+                })["useLoadGoogleMaps.useEffect"];
+            }
+        }
+    }["useLoadGoogleMaps.useEffect"], []);
+    return loaded;
+}
+_s(useLoadGoogleMaps, "I8RUn14npbk54TheiKdNt4wCpsU=");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/components/OrderAddressModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>OrderAddressModal
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hooks/useLoadGoogleMaps.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+function OrderAddressModal() {
+    _s();
+    const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
+    const [mode, setMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("map");
+    const [manualAddress, setManualAddress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [selectedLocation, setSelectedLocation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const autocompleteRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const googleLoaded = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
+    // Debug
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderAddressModal.useEffect": ()=>{
+            console.log("Address Modal Open:", isOrderAddressModalOpen, "Google Loaded:", googleLoaded);
+        }
+    }["OrderAddressModal.useEffect"], [
+        isOrderAddressModalOpen,
+        googleLoaded
+    ]);
+    /** Initialize Google Map */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderAddressModal.useEffect": ()=>{
+            if (!googleLoaded || !mapRef.current || mode !== "map") return;
+            const map = new google.maps.Map(mapRef.current, {
+                center: {
+                    lat: 14.5995,
+                    lng: 120.9842
+                },
+                zoom: 14
+            });
+            const marker = new google.maps.Marker({
+                map,
+                draggable: true,
+                position: map.getCenter()
+            });
+            setSelectedLocation(map.getCenter().toJSON());
+            marker.addListener("dragend", {
+                "OrderAddressModal.useEffect": ()=>{
+                    setSelectedLocation(marker.getPosition().toJSON());
+                }
+            }["OrderAddressModal.useEffect"]);
+            map.addListener("click", {
+                "OrderAddressModal.useEffect": (e)=>{
+                    if (!e.latLng) return;
+                    marker.setPosition(e.latLng);
+                    setSelectedLocation(e.latLng.toJSON());
+                }
+            }["OrderAddressModal.useEffect"]);
+        }
+    }["OrderAddressModal.useEffect"], [
+        googleLoaded,
+        mode
+    ]);
+    /** Initialize Autocomplete */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderAddressModal.useEffect": ()=>{
+            if (!googleLoaded || mode !== "manual" || !autocompleteRef.current) return;
+            const autocomplete = new google.maps.places.Autocomplete(autocompleteRef.current, {
+                fields: [
+                    "formatted_address",
+                    "geometry"
+                ]
+            });
+            autocomplete.addListener("place_changed", {
+                "OrderAddressModal.useEffect": ()=>{
+                    const place = autocomplete.getPlace();
+                    if (!place.formatted_address || !place.geometry?.location) return;
+                    setManualAddress(place.formatted_address);
+                    setSelectedLocation(place.geometry.location.toJSON());
+                }
+            }["OrderAddressModal.useEffect"]);
+        }
+    }["OrderAddressModal.useEffect"], [
+        googleLoaded,
+        mode
+    ]);
+    /** Save Address */ const handleSave = ()=>{
+        if (!selectedLocation) return;
+        saveAddress({
+            address: manualAddress || "Pinned on map",
+            coordinates: selectedLocation
+        });
+        closeOrderAddressModal();
+    };
+    if (!isOrderAddressModalOpen) return null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-white p-6 rounded-lg w-11/12 max-w-md animate-fadeIn",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    className: "text-xl font-bold mb-4",
+                    children: "Select Delivery Address"
+                }, void 0, false, {
+                    fileName: "[project]/components/OrderAddressModal.tsx",
+                    lineNumber: 98,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex space-x-2 mb-4",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>setMode("map"),
+                            className: `px-2 py-1 rounded ${mode === "map" ? "bg-blue-500 text-white" : "bg-gray-200"}`,
+                            children: "📍 Pick from Map"
+                        }, void 0, false, {
+                            fileName: "[project]/components/OrderAddressModal.tsx",
+                            lineNumber: 101,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>setMode("manual"),
+                            className: `px-2 py-1 rounded ${mode === "manual" ? "bg-blue-500 text-white" : "bg-gray-200"}`,
+                            children: "✏️ Enter Address"
+                        }, void 0, false, {
+                            fileName: "[project]/components/OrderAddressModal.tsx",
+                            lineNumber: 109,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/OrderAddressModal.tsx",
+                    lineNumber: 100,
+                    columnNumber: 9
+                }, this),
+                mode === "map" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    ref: mapRef,
+                    style: {
+                        width: "100%",
+                        height: 300,
+                        borderRadius: 8
+                    }
+                }, void 0, false, {
+                    fileName: "[project]/components/OrderAddressModal.tsx",
+                    lineNumber: 120,
+                    columnNumber: 11
+                }, this),
+                mode === "manual" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                    ref: autocompleteRef,
+                    type: "text",
+                    placeholder: "Enter your address",
+                    className: "border p-2 w-full rounded"
+                }, void 0, false, {
+                    fileName: "[project]/components/OrderAddressModal.tsx",
+                    lineNumber: 127,
+                    columnNumber: 11
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex justify-end space-x-2 mt-4",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            className: "px-4 py-2 bg-gray-300 rounded",
+                            onClick: closeOrderAddressModal,
+                            children: "Close"
+                        }, void 0, false, {
+                            fileName: "[project]/components/OrderAddressModal.tsx",
+                            lineNumber: 136,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            className: "px-4 py-2 bg-green-600 text-white rounded",
+                            onClick: handleSave,
+                            children: "Save Address"
+                        }, void 0, false, {
+                            fileName: "[project]/components/OrderAddressModal.tsx",
+                            lineNumber: 142,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/OrderAddressModal.tsx",
+                    lineNumber: 135,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/components/OrderAddressModal.tsx",
+            lineNumber: 97,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/components/OrderAddressModal.tsx",
+        lineNumber: 96,
+        columnNumber: 5
+    }, this);
+}
+_s(OrderAddressModal, "3nHgpn9tcMe7ZzVw3OjtiW0701A=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
+    ];
+});
+_c = OrderAddressModal;
+var _c;
+__turbopack_context__.k.register(_c, "OrderAddressModal");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/context/CartContext.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -594,9 +851,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Toast$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Toast.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$OrderAddressModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/OrderAddressModal.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -736,13 +995,18 @@ const CartProvider = ({ children })=>{
                 onClose: ()=>setToast(null)
             }, void 0, false, {
                 fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 196,
+                lineNumber: 197,
                 columnNumber: 9
+            }, ("TURBOPACK compile-time value", void 0)),
+            isOrderAddressModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$OrderAddressModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                fileName: "[project]/context/CartContext.tsx",
+                lineNumber: 203,
+                columnNumber: 35
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/context/CartContext.tsx",
-        lineNumber: 163,
+        lineNumber: 164,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -1596,7 +1860,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/OtpModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// components/OtpModal.tsx
 __turbopack_context__.s([
     "default",
     ()=>OtpModal
@@ -1611,10 +1874,15 @@ var _s = __turbopack_context__.k.signature();
 ;
 function OtpModal() {
     _s();
-    const { isOtpModalOpen, closeOtpModal, phone, email, validateOtp, generateOtp } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
+    const { isOtpModalOpen, phone, email, validateOtp } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
     const { register, handleSubmit, formState: { errors } } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"])();
     const onSubmit = (data)=>{
-        if (!validateOtp(data.otp)) alert("Invalid OTP");
+        const isValid = validateOtp(data.otp);
+        if (!isValid) {
+            alert("Invalid OTP");
+        }
+    // ✅ Don't call openOrderAddressModal or closeOtpModal here
+    // validateOtp() already handles it
     };
     if (!isOtpModalOpen) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1627,7 +1895,7 @@ function OtpModal() {
                     children: "Enter OTP"
                 }, void 0, false, {
                     fileName: "[project]/components/OtpModal.tsx",
-                    lineNumber: 34,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1639,7 +1907,7 @@ function OtpModal() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OtpModal.tsx",
-                    lineNumber: 35,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1656,7 +1924,7 @@ function OtpModal() {
                             className: "border p-2 rounded"
                         }, void 0, false, {
                             fileName: "[project]/components/OtpModal.tsx",
-                            lineNumber: 44,
+                            lineNumber: 43,
                             columnNumber: 11
                         }, this),
                         errors.otp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1664,7 +1932,7 @@ function OtpModal() {
                             children: "6-digit OTP required"
                         }, void 0, false, {
                             fileName: "[project]/components/OtpModal.tsx",
-                            lineNumber: 51,
+                            lineNumber: 50,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1673,21 +1941,21 @@ function OtpModal() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
                                     className: "px-4 py-2 bg-gray-300 rounded",
-                                    onClick: ()=>closeOtpModal(),
+                                    onClick: ()=>validateOtp("cancel"),
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/components/OtpModal.tsx",
-                                    lineNumber: 55,
+                                    lineNumber: 54,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
                                     className: "px-4 py-2 bg-blue-400 text-white rounded",
-                                    onClick: ()=>generateOtp(phone, email),
+                                    onClick: ()=>validateOtp("resend"),
                                     children: "Resend OTP"
                                 }, void 0, false, {
                                     fileName: "[project]/components/OtpModal.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 61,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1696,34 +1964,34 @@ function OtpModal() {
                                     children: "Verify OTP"
                                 }, void 0, false, {
                                     fileName: "[project]/components/OtpModal.tsx",
-                                    lineNumber: 69,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/OtpModal.tsx",
-                            lineNumber: 54,
+                            lineNumber: 53,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OtpModal.tsx",
-                    lineNumber: 40,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/OtpModal.tsx",
-            lineNumber: 33,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/OtpModal.tsx",
-        lineNumber: 32,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
-_s(OtpModal, "9CxpIfMoBe/IvCIah0jvuX8yy8s=", false, function() {
+_s(OtpModal, "Gf+gFd26BAsCSg54P0uWTsOM4Dw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"]
@@ -1805,6 +2073,35 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/components/GoogleMapsLoader.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>GoogleMapsLoader
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/script.js [app-client] (ecmascript)");
+"use client";
+;
+;
+function GoogleMapsLoader() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+        src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpApXaxF5oRAYsQ0-yqj2M_jODFNzMBM&callback=initAutocomplete&libraries=places",
+        strategy: "afterInteractive"
+    }, void 0, false, {
+        fileName: "[project]/components/GoogleMapsLoader.tsx",
+        lineNumber: 7,
+        columnNumber: 5
+    }, this);
+}
+_c = GoogleMapsLoader;
+var _c;
+__turbopack_context__.k.register(_c, "GoogleMapsLoader");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 ]);
 
-//# sourceMappingURL=_18119ee0._.js.map
+//# sourceMappingURL=_774119b8._.js.map

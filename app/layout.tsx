@@ -9,7 +9,7 @@ import OrderSummaryModal from "../components/OrderSummaryModal";
 import OrderValidation from "../components/OrderValidationModal";
 import OtpModal from "../components/OtpModal";
 import { ToastProvider } from "../context/ToastContext";
-import Header from "../components/Header";
+import GoogleMapsLoader from "../components/GoogleMapsLoader";
 
 export const metadata = {
   title: "Smoothies & More",
@@ -58,6 +58,7 @@ export default function RootLayout({
       <body className="bg-gradient-to-b from-white to-gray-50 font-sans">
         <ToastProvider>
           <CartProvider>
+            <GoogleMapsLoader />
             <PageLoader />
             <PwaRegister>{children}</PwaRegister>
             <IosA2HS />
