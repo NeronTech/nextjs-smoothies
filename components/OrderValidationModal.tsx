@@ -39,7 +39,7 @@ export default function OrderValidation() {
           <input
             type="text"
             placeholder="Phone Number"
-            {...register("phone", { required: true, pattern: /^\d{10}$/ })}
+            {...register("phone", { pattern: /^\d{10}$/ })}
             className="border p-2 rounded"
           />
           {errors.phone && (

@@ -1376,7 +1376,6 @@ function OrderValidation() {
                             type: "text",
                             placeholder: "Phone Number",
                             ...register("phone", {
-                                required: true,
                                 pattern: /^\d{10}$/
                             }),
                             className: "border p-2 rounded"

@@ -105,11 +105,17 @@ export default function OrderModal() {
         <hr />
         <div className="mt-4 flex justify-center">
           <button
+            disabled={cart.length === 0}
             onClick={() => {
+              if (cart.length === 0) return;
               closeOrderModal();
               openOrderSummary();
             }}
-            className="px-4 py-2 bg-blue-600 text-white rounded font-semibold hover:bg-blue-700"
+            className={`px-4 py-2 rounded font-semibold hover:bg-blue-700 ${
+              cart.length === 0
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-700"
+            }`}
           >
             Go to Checkout
           </button>

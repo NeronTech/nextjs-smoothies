@@ -8,6 +8,8 @@ import IosA2HS from "../components/IosA2HS";
 import OrderSummaryModal from "../components/OrderSummaryModal";
 import OrderValidation from "../components/OrderValidationModal";
 import OtpModal from "../components/OtpModal";
+import { ToastProvider } from "../context/ToastContext";
+import Header from "../components/Header";
 
 export const metadata = {
   title: "Smoothies & More",
@@ -54,15 +56,17 @@ export default function RootLayout({
       </head>
 
       <body className="bg-gradient-to-b from-white to-gray-50 font-sans">
-        <CartProvider>
-          <PageLoader />
-          <PwaRegister>{children}</PwaRegister>
-          <IosA2HS />
-          <OrderModal />
-          <OrderSummaryModal />
-          <OrderValidation />
-          <OtpModal />
-        </CartProvider>
+        <ToastProvider>
+          <CartProvider>
+            <PageLoader />
+            <PwaRegister>{children}</PwaRegister>
+            <IosA2HS />
+            <OrderModal />
+            <OrderSummaryModal />
+            <OrderValidation />
+            <OtpModal />
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );

@@ -3,18 +3,23 @@
 
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount, openOrderModal } = useCart();
+  const { showToast } = useToast();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   const handleCartClick = () => {
     // Close mobile menu if open
     setMobileMenuOpen(false);
-    // Open the order modal
-    openOrderModal();
+    if (cartCount === 0) {
+      showToast("Your cart is empty!", "error"); // <-- Works globally!
+    } else {
+      openOrderModal();
+    }
   };
 
   return (
