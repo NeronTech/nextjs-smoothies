@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import Toast from "../components/Toast";
 import { useRouter } from "next/navigation";
 import OrderAddressModal from "../components/OrderAddressModal";
+import CheckoutSummaryModal from "../components/CheckoutSummaryModal";
 
 export interface CartItem {
   name: string;
@@ -47,6 +48,9 @@ interface CartContextType {
       coordinates: { lat: number; lng: number };
     } | null
   ) => void;
+  isCheckoutSummaryModalOpen: boolean;
+  openCheckoutSummary: () => void;
+  closeCheckoutSummary: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -76,6 +80,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     address: string;
     coordinates: { lat: number; lng: number };
   } | null>(null);
+  const [isCheckoutSummaryModalOpen, setCheckoutSummaryModalOpen] =
+    useState(false);
 
   // Function to show toast
   const showToast = (
@@ -138,6 +144,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const openOrderAddressModal = () => setOrderAddressModalOpen(true);
   const closeOrderAddressModal = () => setOrderAddressModalOpen(false);
 
+  const openCheckoutSummary = () => setCheckoutSummaryModalOpen(true);
+  const closeCheckoutSummary = () => setCheckoutSummaryModalOpen(false);
+
   const generateOtp = (phoneInput: string, emailInput?: string) => {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
     setOtp(newOtp);
@@ -190,6 +199,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         closeOrderAddressModal,
         address,
         saveAddress,
+        isCheckoutSummaryModalOpen,
+        openCheckoutSummary,
+        closeCheckoutSummary,
       }}
     >
       {children}
@@ -201,6 +213,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         />
       )}
       {isOrderAddressModalOpen && <OrderAddressModal />}
+      {isCheckoutSummaryModalOpen && <CheckoutSummaryModal />}
     </CartContext.Provider>
   );
 };

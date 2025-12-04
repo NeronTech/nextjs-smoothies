@@ -1441,6 +1441,10 @@ img, video {
   padding-top: 2rem;
 }
 
+.pt-2 {
+  padding-top: .5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1598,6 +1602,15 @@ img, video {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .opacity-0 {

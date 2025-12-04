@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 import useLoadGoogleMaps from "../hooks/useLoadGoogleMaps";
 
 export default function OrderAddressModal() {
-  const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress } =
+  const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress, openCheckoutSummary   } =
     useCart();
 
   const [mode, setMode] = useState<"map" | "manual">("map");
@@ -14,21 +14,24 @@ export default function OrderAddressModal() {
     lat: number;
     lng: number;
   } | null>(null);
+  const [resolvedAddress, setResolvedAddress] = useState(""); // new state
 
   const mapRef = useRef<HTMLDivElement>(null);
   const autocompleteRef = useRef<HTMLInputElement>(null);
 
   const googleLoaded = useLoadGoogleMaps();
 
-  // Debug
-  useEffect(() => {
-    console.log(
-      "Address Modal Open:",
-      isOrderAddressModalOpen,
-      "Google Loaded:",
-      googleLoaded
-    );
-  }, [isOrderAddressModalOpen, googleLoaded]);
+  /** Reverse geocode function */
+  const reverseGeocode = (lat: number, lng: number) => {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ location: { lat, lng } }, (results, status) => {
+      if (status === "OK" && results && results[0]) {
+        setResolvedAddress(results[0].formatted_address);
+      } else {
+        setResolvedAddress("Address not found");
+      }
+    });
+  };
 
   /** Initialize Google Map */
   useEffect(() => {
@@ -45,16 +48,22 @@ export default function OrderAddressModal() {
       position: map.getCenter(),
     });
 
-    setSelectedLocation(map.getCenter()!.toJSON());
+    const initialPos = map.getCenter()!.toJSON();
+    setSelectedLocation(initialPos);
+    reverseGeocode(initialPos.lat, initialPos.lng); // reverse geocode initial position
 
     marker.addListener("dragend", () => {
-      setSelectedLocation(marker.getPosition()!.toJSON());
+      const pos = marker.getPosition()!.toJSON();
+      setSelectedLocation(pos);
+      reverseGeocode(pos.lat, pos.lng); // reverse geocode on drag
     });
 
     map.addListener("click", (e: google.maps.MapMouseEvent) => {
       if (!e.latLng) return;
+      const pos = e.latLng.toJSON();
       marker.setPosition(e.latLng);
-      setSelectedLocation(e.latLng.toJSON());
+      setSelectedLocation(pos);
+      reverseGeocode(pos.lat, pos.lng); // reverse geocode on click
     });
   }, [googleLoaded, mode]);
 
@@ -75,6 +84,7 @@ export default function OrderAddressModal() {
 
       setManualAddress(place.formatted_address);
       setSelectedLocation(place.geometry.location.toJSON());
+      setResolvedAddress(place.formatted_address); // also update resolvedAddress
     });
   }, [googleLoaded, mode]);
 
@@ -83,11 +93,12 @@ export default function OrderAddressModal() {
     if (!selectedLocation) return;
 
     saveAddress({
-      address: manualAddress || "Pinned on map",
+      address: resolvedAddress || manualAddress || "Pinned on map",
       coordinates: selectedLocation,
     });
 
     closeOrderAddressModal();
+    openCheckoutSummary();
   };
 
   if (!isOrderAddressModalOpen) return null;
@@ -117,19 +128,26 @@ export default function OrderAddressModal() {
         </div>
 
         {mode === "map" && (
-          <div
-            ref={mapRef}
-            style={{ width: "100%", height: 300, borderRadius: 8 }}
-          />
+          <>
+            <div
+              ref={mapRef}
+              style={{ width: "100%", height: 300, borderRadius: 8 }}
+            />
+            <p className="mt-2 text-gray-700">
+              Selected Address: {resolvedAddress || "Loading..."}
+            </p>
+          </>
         )}
 
         {mode === "manual" && (
-          <input
-            ref={autocompleteRef}
-            type="text"
-            placeholder="Enter your address"
-            className="border p-2 w-full rounded"
-          />
+          <>
+            <input
+              ref={autocompleteRef}
+              type="text"
+              placeholder="Enter your address"
+              className="border p-2 w-full rounded"
+            />
+          </>
         )}
 
         <div className="flex justify-end space-x-2 mt-4">
