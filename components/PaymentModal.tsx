@@ -6,13 +6,27 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function PaymentModal() {
-  const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart, phone, email, cart } =
-    useCart();
+  const {
+    isPaymentModalOpen,
+    closePaymentModal,
+    totalPrice,
+    clearCart,
+    phone,
+    email,
+    cart,
+  } = useCart();
   const router = useRouter();
 
   if (!isPaymentModalOpen) return null;
 
   const openRazorpayCheckout = () => {
+    // Pass phone & email to order-success page
+    sessionStorage.setItem("orderPhone", phone || "");
+    sessionStorage.setItem("orderEmail", email || "");
+
+    // Pass order summary
+    sessionStorage.setItem("orderSummary", JSON.stringify(cart));
+
     const options = {
       key: "YOUR_RAZORPAY_KEY_ID",
       amount: totalPrice * 100, // convert to paise
@@ -43,6 +57,9 @@ export default function PaymentModal() {
 
     const rzp = new (window as any).Razorpay(options);
     rzp.open();
+    setTimeout(() => {
+      closePaymentModal(), router.push("/order-success"), clearCart();
+    }, 3000);
   };
 
   useEffect(() => {

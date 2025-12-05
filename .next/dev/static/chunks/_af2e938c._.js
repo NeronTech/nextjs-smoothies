@@ -897,7 +897,7 @@ function CheckoutSummaryModal() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-white p-6 rounded-lg w-11/12 max-w-md animate-fadeIn",
+            className: "bg-white p-6 rounded-lg w-11/12 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl animate-fadeIn overflow-y-auto max-h-[90vh]",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                     className: "text-xl font-bold mb-4",
@@ -912,7 +912,7 @@ function CheckoutSummaryModal() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: "font-semibold mb-2",
-                            children: "Order Summary"
+                            children: "Items:"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
                             lineNumber: 41,
@@ -929,9 +929,10 @@ function CheckoutSummaryModal() {
                                 className: "flex justify-between items-center mb-1",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex-1",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "font-medium",
+                                                className: "font-medium text-sm sm:text-base",
                                                 children: item.name
                                             }, void 0, false, {
                                                 fileName: "[project]/components/CheckoutSummaryModal.tsx",
@@ -943,7 +944,7 @@ function CheckoutSummaryModal() {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>decreaseQuantity(item.name),
-                                                        className: "px-2 py-1 bg-gray-200 rounded",
+                                                        className: "px-2 py-1 bg-gray-200 rounded text-sm",
                                                         children: "-"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/CheckoutSummaryModal.tsx",
@@ -951,7 +952,7 @@ function CheckoutSummaryModal() {
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "px-2",
+                                                        className: "px-2 text-sm sm:text-base",
                                                         children: item.quantity
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/CheckoutSummaryModal.tsx",
@@ -960,11 +961,11 @@ function CheckoutSummaryModal() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>increaseQuantity(item.name),
-                                                        className: "px-2 py-1 bg-gray-200 rounded",
+                                                        className: "px-2 py-1 bg-gray-200 rounded text-sm",
                                                         children: "+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 58,
+                                                        lineNumber: 60,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
@@ -974,20 +975,20 @@ function CheckoutSummaryModal() {
                                                 columnNumber: 17
                                             }, this),
                                             item.addOns && item.addOns.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-mute mt-1",
+                                                className: "text-xs sm:text-sm text-mute mt-1",
                                                 children: [
                                                     "Add-ons: ",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
                                                         children: item.addOns.join(", ")
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 68,
+                                                        lineNumber: 69,
                                                         columnNumber: 30
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                lineNumber: 67,
+                                                lineNumber: 68,
                                                 columnNumber: 19
                                             }, this)
                                         ]
@@ -997,13 +998,14 @@ function CheckoutSummaryModal() {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-sm sm:text-base",
                                         children: [
-                                            "₱",
+                                            "$",
                                             (item.price * item.quantity).toFixed(2)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 73,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1020,7 +1022,7 @@ function CheckoutSummaryModal() {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {}, void 0, false, {
                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 76,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1029,33 +1031,34 @@ function CheckoutSummaryModal() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: "font-semibold mb-1 flex justify-between items-center",
                             children: [
-                                "Delivery Address",
+                                "Delivery Address:",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "text-blue-500 underline text-sm",
+                                    className: "text-blue-500 underline text-xs sm:text-sm",
                                     onClick: handleEditAddress,
                                     children: "Edit"
                                 }, void 0, false, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 85,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 80,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-sm sm:text-base",
                             children: address?.address || "No address selected"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 89,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 79,
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1063,152 +1066,153 @@ function CheckoutSummaryModal() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: "font-semibold mb-1",
-                            children: "Contact"
+                            children: "Contact Details:"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 94,
+                            lineNumber: 99,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-sm sm:text-base",
                             children: phone || email || "No contact info"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 95,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 93,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "mb-4 border-t pt-2",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between",
+                            className: "flex justify-between text-sm sm:text-base",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Subtotal:"
                                 }, void 0, false, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
-                                        "₱",
+                                        "$",
                                         totalPrice.toFixed(2)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 100,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between",
+                            className: "flex justify-between text-sm sm:text-base",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Tax (12%):"
                                 }, void 0, false, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
-                                        "₱",
+                                        "$",
                                         tax.toFixed(2)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 106,
+                                    lineNumber: 113,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 104,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between",
+                            className: "flex justify-between text-sm sm:text-base",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Delivery:"
                                 }, void 0, false, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
-                                        "₱",
+                                        "$",
                                         DELIVERY_CHARGE.toFixed(2)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 117,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 108,
+                            lineNumber: 115,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between font-bold mt-2",
+                            className: "flex justify-between font-bold mt-2 text-sm sm:text-base",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Grand Total:"
                                 }, void 0, false, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
-                                        "₱",
+                                        "$",
                                         grandTotal.toFixed(2)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 121,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 112,
+                            lineNumber: 119,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 99,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex justify-end space-x-2 mt-4",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-gray-300 rounded",
+                            className: "px-4 py-2 bg-gray-300 rounded text-sm sm:text-base",
                             onClick: closeCheckoutSummary,
                             children: "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 120,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-green-600 text-white rounded",
+                            className: "px-4 py-2 bg-green-600 text-white rounded text-sm sm:text-base",
                             onClick: ()=>{
                                 closeCheckoutSummary(); // close this modal
                                 openPaymentModal(); // open RazorPay payment modal
@@ -1216,13 +1220,13 @@ function CheckoutSummaryModal() {
                             children: "Checkout"
                         }, void 0, false, {
                             fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 126,
+                            lineNumber: 133,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 119,
+                    lineNumber: 126,
                     columnNumber: 9
                 }, this)
             ]
@@ -1273,6 +1277,11 @@ function PaymentModal() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     if (!isPaymentModalOpen) return null;
     const openRazorpayCheckout = ()=>{
+        // Pass phone & email to order-success page
+        sessionStorage.setItem("orderPhone", phone || "");
+        sessionStorage.setItem("orderEmail", email || "");
+        // Pass order summary
+        sessionStorage.setItem("orderSummary", JSON.stringify(cart));
         const options = {
             key: "YOUR_RAZORPAY_KEY_ID",
             amount: totalPrice * 100,
@@ -1299,6 +1308,9 @@ function PaymentModal() {
         };
         const rzp = new window.Razorpay(options);
         rzp.open();
+        setTimeout(()=>{
+            closePaymentModal(), router.push("/order-success"), clearCart();
+        }, 3000);
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PaymentModal.useEffect": ()=>{
@@ -1319,7 +1331,7 @@ function PaymentModal() {
                     children: "Payment"
                 }, void 0, false, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 59,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1330,7 +1342,7 @@ function PaymentModal() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 61,
+                    lineNumber: 78,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1342,7 +1354,7 @@ function PaymentModal() {
                             children: "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 64,
+                            lineNumber: 81,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1351,28 +1363,28 @@ function PaymentModal() {
                             children: "Pay with Razorpay"
                         }, void 0, false, {
                             fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 71,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 63,
+                    lineNumber: 80,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/PaymentModal.tsx",
-            lineNumber: 58,
+            lineNumber: 75,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/PaymentModal.tsx",
-        lineNumber: 57,
+        lineNumber: 74,
         columnNumber: 5
     }, this);
 }
-_s(PaymentModal, "3Osxb2G2HzN9YPjU7fcCuW0Nb2Y=", false, function() {
+_s(PaymentModal, "/eMd/Ykgbz12EfZhisi3qNiUGG8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
