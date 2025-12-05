@@ -13,6 +13,7 @@ interface UserContextType {
   loadUser: () => void;
   registerUser: (user: UserProfile) => void;
   logout: () => void;
+  loginUser: (user: any) => void;
 }
 
 const UserContext = createContext<UserContextType>({
@@ -20,6 +21,7 @@ const UserContext = createContext<UserContextType>({
   loadUser: () => {},
   registerUser: () => {},
   logout: () => {},
+  loginUser: () => {},
 });
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
@@ -40,12 +42,19 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   };
 
+  const loginUser = (user: any) => {
+    setUser(user);
+    localStorage.setItem("currentUser", JSON.stringify(user));
+  };
+
   useEffect(() => {
     loadUser();
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, loadUser, registerUser, logout }}>
+    <UserContext.Provider
+      value={{ user, loadUser, registerUser, logout, loginUser }}
+    >
       {children}
     </UserContext.Provider>
   );

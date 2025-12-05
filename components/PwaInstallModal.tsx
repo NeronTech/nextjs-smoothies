@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import RegistrationModal from "./RegistrationModal";
 import { useUser } from "../context/UserContext";
+import LoginModal from "./LoginModal";
 
 interface PwaInstallModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export default function PwaInstallModal({
 
   const { user } = useUser();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -37,7 +39,9 @@ export default function PwaInstallModal({
         <div className="flex flex-col space-y-3">
           {isRegistered ? (
             <button
-              onClick={onClose}
+              onClick={() => {
+                onClose(), setShowLogin(true);
+              }}
               className="px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md"
             >
               Login
@@ -78,6 +82,7 @@ export default function PwaInstallModal({
           )}
 
           {isModalOpen && <RegistrationModal onClose={closeModal} />}
+          {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
         </div>
       </div>
     </div>
