@@ -1155,7 +1155,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 ;
 ;
 function PaymentModal() {
-    const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCart"])();
+    const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart, phone, email, cart } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCart"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     if (!isPaymentModalOpen) return null;
     const openRazorpayCheckout = ()=>{
@@ -1167,9 +1167,15 @@ function PaymentModal() {
             description: "Order Payment",
             handler: function(response) {
                 console.log("Payment Success: ", response);
-                clearCart(); // empty cart
-                closePaymentModal(); // close payment modal
-                router.push("/"); // redirect to homepage
+                console.log("Payment Success: ", response);
+                // Pass phone & email to order-success page
+                sessionStorage.setItem("orderPhone", phone || "");
+                sessionStorage.setItem("orderEmail", email || "");
+                // Pass order summary
+                sessionStorage.setItem("orderSummary", JSON.stringify(cart));
+                clearCart();
+                closePaymentModal();
+                router.push("/order-success");
             },
             modal: {
                 ondismiss: ()=>{
@@ -1197,7 +1203,7 @@ function PaymentModal() {
                     children: "Payment"
                 }, void 0, false, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 50,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1208,7 +1214,7 @@ function PaymentModal() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 52,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1220,7 +1226,7 @@ function PaymentModal() {
                             children: "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 55,
+                            lineNumber: 64,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1229,24 +1235,24 @@ function PaymentModal() {
                             children: "Pay with Razorpay"
                         }, void 0, false, {
                             fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 62,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 54,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/PaymentModal.tsx",
-            lineNumber: 49,
+            lineNumber: 58,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/PaymentModal.tsx",
-        lineNumber: 48,
+        lineNumber: 57,
         columnNumber: 5
     }, this);
 }

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function PaymentModal() {
-  const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart } =
+  const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart, phone, email, cart } =
     useCart();
   const router = useRouter();
 
@@ -21,9 +21,18 @@ export default function PaymentModal() {
       description: "Order Payment",
       handler: function (response: any) {
         console.log("Payment Success: ", response);
-        clearCart(); // empty cart
-        closePaymentModal(); // close payment modal
-        router.push("/"); // redirect to homepage
+        console.log("Payment Success: ", response);
+
+        // Pass phone & email to order-success page
+        sessionStorage.setItem("orderPhone", phone || "");
+        sessionStorage.setItem("orderEmail", email || "");
+
+        // Pass order summary
+        sessionStorage.setItem("orderSummary", JSON.stringify(cart));
+
+        clearCart();
+        closePaymentModal();
+        router.push("/order-success");
       },
       modal: {
         ondismiss: () => {

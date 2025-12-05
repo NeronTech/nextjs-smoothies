@@ -325,3 +325,13 @@
 [15:14:16.642] Browser LOG     SW registered {}
 [15:15:03.637] Server  LOG      ✓ Compiled in 68ms
 [15:15:28.021] Browser WARN    Image with src "https://readdy.ai/api/search-image?query=Traditional%20masala%20chai%20in%20a%20clear%20glass%20cup%20with%20rich%20brown%20color%2C%20aromatic%20spices%20like%20cardamom%20cinnamon%20and%20ginger%20scattered%20around%20on%20a%20white%20wooden%20surface%2C%20Indian%20tea%20culture%20photography%20with%20warm%20lighting%20and%20cozy%20atmosphere&width=400&height=300&seq=masalatea001&orientation=landscape" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[15:22:08.925] Server  LOG      ✓ Compiled in 103ms
+[15:22:09.518] Browser WARN    Image with src "https://picsum.photos/seed/nutrition/400/300" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[15:22:17.617] Server  LOG      ✓ Compiled in 110ms
+[15:22:56.090] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[15:22:56.471] Browser WARN    Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading
+[15:22:56.663] Browser LOG     SW registered {}
+[15:24:21.433] Server  LOG      ✓ Compiled in 85ms
+[15:24:36.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[15:24:37.715] Browser WARN    Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading
+[15:24:37.715] Browser LOG     SW registered {}
