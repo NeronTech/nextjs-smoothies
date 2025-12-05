@@ -37,6 +37,11 @@ export default function OrderSummaryModal() {
               <p className="font-semibold">
                 {item.name} × {item.quantity}
               </p>
+              {item.addOns && item.addOns.length > 0 && (
+                <p className="text-sm text-mute">
+                  Add-ons: <b>{item.addOns.join(", ")}</b>
+                </p>
+              )}
               <p className="text-gray-500 text-sm">
                 ${item.price.toFixed(2)} each
               </p>

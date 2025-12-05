@@ -1,15 +1,23 @@
 // context/CartContext.tsx
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import Toast from "../components/Toast";
 import { useRouter } from "next/navigation";
 import OrderAddressModal from "../components/OrderAddressModal";
 import CheckoutSummaryModal from "../components/CheckoutSummaryModal";
+import PaymentModal from "../components/PaymentModal";
 
 export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  addOns?: string[];
 }
 
 interface CartContextType {
@@ -51,6 +59,11 @@ interface CartContextType {
   isCheckoutSummaryModalOpen: boolean;
   openCheckoutSummary: () => void;
   closeCheckoutSummary: () => void;
+  updateItemAddOns: (itemName: string, addOns: string[]) => void;
+  isPaymentModalOpen: boolean;
+  openPaymentModal: () => void;
+  closePaymentModal: () => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -83,6 +96,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [isCheckoutSummaryModalOpen, setCheckoutSummaryModalOpen] =
     useState(false);
 
+  const clearCart = () => setCart([]);
+
   // Function to show toast
   const showToast = (
     message: string,
@@ -91,18 +106,36 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setToast({ message, type });
   };
 
-  const addToCart = (item: Omit<CartItem, "quantity">) => {
+  const addToCart = (
+    item: Omit<CartItem, "quantity"> & { addOns?: string[] }
+  ) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.name === item.name);
+      const existing = prev.find(
+        (i) =>
+          i.name === item.name &&
+          JSON.stringify(i.addOns || []) === JSON.stringify(item.addOns || [])
+      );
+
       if (existing) {
         showToast(`${item.name} quantity increased`, "success");
         return prev.map((i) =>
-          i.name === item.name ? { ...i, quantity: i.quantity + 1 } : i
+          i === existing ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
+
       showToast(`${item.name} added to cart`, "success");
       return [...prev, { ...item, quantity: 1 }];
     });
+  };
+
+  const updateItemAddOns = (itemName: string, addOns: string[]) => {
+    setCart((prev) =>
+      prev.map((i) =>
+        i.name === itemName
+          ? { ...i, addOns } // update add-ons only
+          : i
+      )
+    );
   };
 
   const increaseQuantity = (name: string) => {
@@ -146,6 +179,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const openCheckoutSummary = () => setCheckoutSummaryModalOpen(true);
   const closeCheckoutSummary = () => setCheckoutSummaryModalOpen(false);
+
+  const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
+
+  const openPaymentModal = () => setPaymentModalOpen(true);
+  const closePaymentModal = () => setPaymentModalOpen(false);
 
   const generateOtp = (phoneInput: string, emailInput?: string) => {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -202,6 +240,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         isCheckoutSummaryModalOpen,
         openCheckoutSummary,
         closeCheckoutSummary,
+        updateItemAddOns,
+        isPaymentModalOpen,
+        openPaymentModal,
+        closePaymentModal,
+        clearCart,
       }}
     >
       {children}
@@ -214,6 +257,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       )}
       {isOrderAddressModalOpen && <OrderAddressModal />}
       {isCheckoutSummaryModalOpen && <CheckoutSummaryModal />}
+      {isPaymentModalOpen && <PaymentModal />}
     </CartContext.Provider>
   );
 };

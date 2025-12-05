@@ -14,7 +14,7 @@ export default function CheckoutSummaryModal() {
     closeCheckoutSummary,
     isCheckoutSummaryModalOpen,
     openOrderAddressModal,
-    saveAddress,
+    openPaymentModal,
   } = useCart();
 
   if (!isCheckoutSummaryModalOpen) return null;
@@ -62,6 +62,12 @@ export default function CheckoutSummaryModal() {
                     +
                   </button>
                 </div>
+                {/* ✅ Add-ons shown here */}
+                {item.addOns && item.addOns.length > 0 && (
+                  <p className="text-sm text-mute mt-1">
+                    Add-ons: <b>{item.addOns.join(", ")}</b>
+                  </p>
+                )}
               </div>
               <span>₱{(item.price * item.quantity).toFixed(2)}</span>
             </div>
@@ -120,11 +126,11 @@ export default function CheckoutSummaryModal() {
           <button
             className="px-4 py-2 bg-green-600 text-white rounded"
             onClick={() => {
-              alert("Order placed!"); // Replace with real checkout logic
-              closeCheckoutSummary();
+              closeCheckoutSummary(); // close this modal
+              openPaymentModal(); // open RazorPay payment modal
             }}
           >
-            Place Order
+            Checkout
           </button>
         </div>
       </div>

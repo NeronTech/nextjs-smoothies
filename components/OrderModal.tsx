@@ -11,6 +11,7 @@ export default function OrderModal() {
     isOrderModalOpen,
     closeOrderModal,
     openOrderSummary,
+    updateItemAddOns,
   } = useCart();
 
   // Dummy add-on options
@@ -27,6 +28,13 @@ export default function OrderModal() {
     setEmail(localStorage.getItem("email") || "");
   }, [isOrderModalOpen]);
 
+  useEffect(() => {
+    // Sync each item’s add-ons to the cart context
+    Object.entries(itemAddOns).forEach(([itemName, addOns]) => {
+      updateItemAddOns(itemName, addOns);
+    });
+  }, [itemAddOns]);
+
   if (!isOrderModalOpen) return null;
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -35,8 +43,8 @@ export default function OrderModal() {
     setItemAddOns((prev) => {
       const current = prev[itemName] || [];
       const updated = current.includes(addon)
-        ? current.filter((a) => a !== addon) // remove
-        : [...current, addon]; // add
+        ? current.filter((a) => a !== addon)
+        : [...current, addon];
 
       return { ...prev, [itemName]: updated };
     });
@@ -52,7 +60,7 @@ export default function OrderModal() {
         ) : (
           <div className="space-y-2">
             {cart.map((item) => (
-              <div key={item.name}>
+              <div key={item.name + "-" + (item.addOns?.join(",") || "")}>
                 <div className="flex justify-between items-center">
                   <div>
                     <p className="font-semibold">{item.name}</p>
