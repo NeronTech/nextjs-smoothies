@@ -84,16 +84,20 @@ function RegistrationModal({ onClose }) {
         }
     };
     const verifyEmailOtp = ()=>{
-        // Save user to localStorage
-        const user = {
-            fullName: formData.fullName,
-            phone: formData.phone,
-            email: formData.email,
-            username: formData.username
-        };
-        localStorage.setItem("userProfile", JSON.stringify(user));
-        alert("Registration Successful!");
-        onClose();
+        if (emailOtpInput === emailOtp) {
+            const userData = {
+                fullName: formData.fullName,
+                phone: formData.phone,
+                email: formData.email,
+                username: formData.username
+            };
+            // Save globally
+            registerUser(userData);
+            alert("Registration Successful!");
+            onClose();
+        } else {
+            alert("Incorrect Email OTP");
+        }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
@@ -108,7 +112,7 @@ function RegistrationModal({ onClose }) {
                             children: "✕"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 122,
+                            lineNumber: 127,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -116,7 +120,7 @@ function RegistrationModal({ onClose }) {
                             children: "Create Account"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 129,
+                            lineNumber: 134,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -130,7 +134,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Full Name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 141,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -142,13 +146,13 @@ function RegistrationModal({ onClose }) {
                                             className: "mt-1 w-full border rounded-md px-3 py-2"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 137,
+                                            lineNumber: 142,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 135,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -158,7 +162,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Phone"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 154,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -170,7 +174,7 @@ function RegistrationModal({ onClose }) {
                                             className: `mt-1 w-full border rounded-md px-3 py-2 ${errors.phone ? "border-red-500" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 150,
+                                            lineNumber: 155,
                                             columnNumber: 17
                                         }, this),
                                         errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -178,13 +182,13 @@ function RegistrationModal({ onClose }) {
                                             children: errors.phone
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 166,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 153,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -194,7 +198,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 172,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -206,7 +210,7 @@ function RegistrationModal({ onClose }) {
                                             className: `mt-1 w-full border rounded-md px-3 py-2 ${errors.email ? "border-red-500" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 173,
                                             columnNumber: 17
                                         }, this),
                                         errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -214,13 +218,13 @@ function RegistrationModal({ onClose }) {
                                             children: errors.email
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 184,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 166,
+                                    lineNumber: 171,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -230,7 +234,7 @@ function RegistrationModal({ onClose }) {
                                             className: "flex-grow border-gray-300"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 190,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -238,20 +242,20 @@ function RegistrationModal({ onClose }) {
                                             children: "Login Details"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 191,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
                                             className: "flex-grow border-gray-300"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 189,
+                                            lineNumber: 194,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 189,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -261,7 +265,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Username"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 199,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -273,13 +277,13 @@ function RegistrationModal({ onClose }) {
                                             className: "mt-1 w-full border rounded-md px-3 py-2"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 200,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 198,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -289,7 +293,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Password"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 207,
+                                            lineNumber: 212,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -301,13 +305,13 @@ function RegistrationModal({ onClose }) {
                                             className: "mt-1 w-full border rounded-md px-3 py-2"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 213,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 211,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -317,7 +321,7 @@ function RegistrationModal({ onClose }) {
                                             children: "Re-type Password"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 220,
+                                            lineNumber: 225,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -329,7 +333,7 @@ function RegistrationModal({ onClose }) {
                                             className: `mt-1 w-full border rounded-md px-3 py-2 ${errors.matchPassword ? "border-red-500" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 221,
+                                            lineNumber: 226,
                                             columnNumber: 17
                                         }, this),
                                         errors.matchPassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -337,13 +341,13 @@ function RegistrationModal({ onClose }) {
                                             children: errors.matchPassword
                                         }, void 0, false, {
                                             fileName: "[project]/components/RegistrationModal.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 237,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 224,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -352,24 +356,24 @@ function RegistrationModal({ onClose }) {
                                     children: "Register"
                                 }, void 0, false, {
                                     fileName: "[project]/components/RegistrationModal.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 241,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 133,
+                            lineNumber: 138,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/RegistrationModal.tsx",
-                    lineNumber: 121,
+                    lineNumber: 126,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/RegistrationModal.tsx",
-                lineNumber: 120,
+                lineNumber: 125,
                 columnNumber: 9
             }, this),
             step === "mobileOtp" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -382,7 +386,7 @@ function RegistrationModal({ onClose }) {
                             children: "Verify Mobile Number"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 251,
+                            lineNumber: 256,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -390,7 +394,7 @@ function RegistrationModal({ onClose }) {
                             children: "Please enter the OTP sent to your mobile."
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 252,
+                            lineNumber: 257,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -401,7 +405,7 @@ function RegistrationModal({ onClose }) {
                             placeholder: "Enter OTP"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 256,
+                            lineNumber: 261,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -410,18 +414,18 @@ function RegistrationModal({ onClose }) {
                             children: "Verify OTP"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 264,
+                            lineNumber: 269,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/RegistrationModal.tsx",
-                    lineNumber: 250,
+                    lineNumber: 255,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/RegistrationModal.tsx",
-                lineNumber: 249,
+                lineNumber: 254,
                 columnNumber: 9
             }, this),
             step === "emailOtp" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -434,7 +438,7 @@ function RegistrationModal({ onClose }) {
                             children: "Verify Email"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 278,
+                            lineNumber: 283,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -442,7 +446,7 @@ function RegistrationModal({ onClose }) {
                             children: "Please enter the OTP sent to your email."
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 279,
+                            lineNumber: 284,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -453,7 +457,7 @@ function RegistrationModal({ onClose }) {
                             placeholder: "Enter OTP"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 283,
+                            lineNumber: 288,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -462,18 +466,18 @@ function RegistrationModal({ onClose }) {
                             children: "Verify Email OTP"
                         }, void 0, false, {
                             fileName: "[project]/components/RegistrationModal.tsx",
-                            lineNumber: 291,
+                            lineNumber: 296,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/RegistrationModal.tsx",
-                    lineNumber: 277,
+                    lineNumber: 282,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/RegistrationModal.tsx",
-                lineNumber: 276,
+                lineNumber: 281,
                 columnNumber: 9
             }, this)
         ]
@@ -487,10 +491,79 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/context/UserContext.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "UserProvider",
+    ()=>UserProvider,
+    "useUser",
+    ()=>useUser
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+"use client";
+;
+const UserContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])({
+    user: null,
+    loadUser: ()=>{},
+    registerUser: ()=>{},
+    logout: ()=>{}
+});
+function UserProvider({ children }) {
+    _s();
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const loadUser = ()=>{
+        const stored = localStorage.getItem("userProfile");
+        if (stored) setUser(JSON.parse(stored));
+    };
+    const registerUser = (userData)=>{
+        localStorage.setItem("userProfile", JSON.stringify(userData));
+        localStorage.setItem("hasVisited", "true");
+        setUser(userData);
+    };
+    const logout = ()=>{
+        localStorage.removeItem("userProfile");
+        localStorage.removeItem("hasVisited");
+        setUser(null);
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "UserProvider.useEffect": ()=>{
+            loadUser();
+        }
+    }["UserProvider.useEffect"], []);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(UserContext.Provider, {
+        value: {
+            user,
+            loadUser,
+            registerUser,
+            logout
+        },
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/context/UserContext.tsx",
+        lineNumber: 50,
+        columnNumber: 5
+    }, this);
+}
+_s(UserProvider, "5s2qRsV95gTJBmaaTh11GoxYeGE=");
+_c = UserProvider;
+const useUser = ()=>{
+    _s1();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(UserContext);
+};
+_s1(useUser, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
+var _c;
+__turbopack_context__.k.register(_c, "UserProvider");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/components/PwaInstallModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// components/PwaInstallModal.tsx
 __turbopack_context__.s([
     "default",
     ()=>PwaInstallModal
@@ -498,16 +571,20 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$RegistrationModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/RegistrationModal.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/UserContext.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
+;
 function PwaInstallModal({ isOpen, onClose }) {
     _s();
     if (!isOpen) return null;
+    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"])();
     const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const closeModal = ()=>setIsModalOpen(false);
+    const isRegistered = !!user;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 z-50 flex items-center justify-center bg-black/50",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -515,109 +592,125 @@ function PwaInstallModal({ isOpen, onClose }) {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                     className: "text-2xl font-bold text-gray-900 mb-4 text-center",
-                    children: "Welcome!"
+                    children: isRegistered ? "Thank you!" : "Welcome!"
                 }, void 0, false, {
                     fileName: "[project]/components/PwaInstallModal.tsx",
-                    lineNumber: 23,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-gray-700 mb-6 text-center",
-                    children: "Your app is installed. What would you like to do next?"
+                    children: isRegistered ? "Your account has been created successfully." : "Your app is installed. What would you like to do next?"
                 }, void 0, false, {
                     fileName: "[project]/components/PwaInstallModal.tsx",
-                    lineNumber: 26,
+                    lineNumber: 31,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex flex-col space-y-3",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: "#register",
-                            className: "px-4 py-2 bg-purple-600 text-white rounded-full text-center hover:bg-purple-700 transition shadow-md",
-                            onClick: ()=>setIsModalOpen(true),
-                            children: "Create Account"
-                        }, void 0, false, {
-                            fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 30,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: "#menu",
-                            className: "px-4 py-2 bg-green-600 text-white rounded-full text-center hover:bg-green-700 transition shadow-md",
-                            onClick: onClose,
-                            children: "Just Order For Now"
-                        }, void 0, false, {
-                            fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 37,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center my-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
-                                    className: "flex-grow border-gray-300"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/PwaInstallModal.tsx",
-                                    lineNumber: 47,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "px-2 text-gray-500 text-sm",
-                                    children: "Or Already have an account?"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/PwaInstallModal.tsx",
-                                    lineNumber: 48,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
-                                    className: "flex-grow border-gray-300"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/PwaInstallModal.tsx",
-                                    lineNumber: 51,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 46,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        isRegistered ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: onClose,
                             className: "px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md",
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 54,
-                            columnNumber: 11
-                        }, this),
+                            lineNumber: 40,
+                            columnNumber: 13
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "#register",
+                                    className: "px-4 py-2 bg-purple-600 text-white rounded-full text-center hover:bg-purple-700 transition shadow-md",
+                                    onClick: ()=>setIsModalOpen(true),
+                                    children: "Create Account"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 48,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "#menu",
+                                    className: "px-4 py-2 bg-green-600 text-white rounded-full text-center hover:bg-green-700 transition shadow-md",
+                                    onClick: onClose,
+                                    children: "Just Order For Now"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 56,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center my-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
+                                            className: "flex-grow border-gray-300"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/PwaInstallModal.tsx",
+                                            lineNumber: 66,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "px-2 text-gray-500 text-sm",
+                                            children: "Or Already have an account?"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/PwaInstallModal.tsx",
+                                            lineNumber: 67,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
+                                            className: "flex-grow border-gray-300"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/PwaInstallModal.tsx",
+                                            lineNumber: 70,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 65,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: onClose,
+                                    className: "px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md",
+                                    children: "Login"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/PwaInstallModal.tsx",
+                                    lineNumber: 73,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true),
                         isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$RegistrationModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             onClose: closeModal
                         }, void 0, false, {
                             fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 61,
+                            lineNumber: 83,
                             columnNumber: 27
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PwaInstallModal.tsx",
-                    lineNumber: 29,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/PwaInstallModal.tsx",
-            lineNumber: 22,
+            lineNumber: 26,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/PwaInstallModal.tsx",
-        lineNumber: 21,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
-_s(PwaInstallModal, "mLsII5HRP5G63IA/8vjZ5YHXWr8=");
+_s(PwaInstallModal, "DTZOj+OFNCzRQ2tuTChradA3Elw=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"]
+    ];
+});
 _c = PwaInstallModal;
 var _c;
 __turbopack_context__.k.register(_c, "PwaInstallModal");
@@ -3038,4 +3131,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=_af2e938c._.js.map
+//# sourceMappingURL=_21bc0526._.js.map
