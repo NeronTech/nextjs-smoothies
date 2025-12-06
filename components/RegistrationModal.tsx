@@ -121,6 +121,7 @@ export default function RegistrationModal({ onClose }: RegistrationModalProps) {
         phone: formData.phone,
         email: formData.email,
         username: formData.username,
+        password: formData.password,
       };
 
       // Save globally

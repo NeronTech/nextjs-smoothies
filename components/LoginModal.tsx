@@ -25,7 +25,8 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     const { usernameOrEmail, password } = formData;
 
     // Check if user exists in localStorage
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const users = JSON.parse(localStorage.getItem("userProfile") || "[]");
+    console.log(users); // now should be an array
     const matchedUser = users.find(
       (u: any) =>
         (u.username === usernameOrEmail || u.email === usernameOrEmail) &&
