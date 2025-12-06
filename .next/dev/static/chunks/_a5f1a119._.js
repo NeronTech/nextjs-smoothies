@@ -816,6 +816,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/context/CartContext.tsx [app-client] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+const e = new Error("Could not parse module '[project]/context/CartContext.tsx'\n\nExpected '{', got ','");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
+}),
 "[project]/components/LoginModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -826,9 +832,11 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/UserContext.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 function LoginModal({ onClose }) {
@@ -839,6 +847,7 @@ function LoginModal({ onClose }) {
         password: ""
     });
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const { openOrderAddressModal } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
     const handleChange = (e)=>{
         setFormData({
             ...formData,
@@ -856,6 +865,10 @@ function LoginModal({ onClose }) {
         if (matchedUser) {
             loginUser(matchedUser); // update context
             onClose(); // close modal
+            // ⭐ CHECK IF THE USER HAS NO ADDRESS
+            if (!matchedUser.address || matchedUser.address === "") {
+                openOrderAddressModal("login"); // prompt for address if none saved
+            }
         } else {
             setError("Invalid username/email or password");
         }
@@ -871,7 +884,7 @@ function LoginModal({ onClose }) {
                     children: "✕"
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 47,
+                    lineNumber: 53,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -879,7 +892,7 @@ function LoginModal({ onClose }) {
                     children: "Login"
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 53,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -887,7 +900,7 @@ function LoginModal({ onClose }) {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 55,
+                    lineNumber: 61,
                     columnNumber: 19
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -901,7 +914,7 @@ function LoginModal({ onClose }) {
                                     children: "Username or Email"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 59,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -913,13 +926,13 @@ function LoginModal({ onClose }) {
                                     className: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 58,
+                            lineNumber: 64,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -929,7 +942,7 @@ function LoginModal({ onClose }) {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 73,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -941,13 +954,13 @@ function LoginModal({ onClose }) {
                                     className: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 76,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 72,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -956,30 +969,31 @@ function LoginModal({ onClose }) {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 86,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 57,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/LoginModal.tsx",
-            lineNumber: 46,
+            lineNumber: 52,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/LoginModal.tsx",
-        lineNumber: 45,
+        lineNumber: 51,
         columnNumber: 5
     }, this);
 }
-_s(LoginModal, "8u2ctj4Dfhrpw5jbTX1i+s7PMKs=", false, function() {
+_s(LoginModal, "HUzTOGr48w4ZYrUKO/wUiyKwmtQ=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
     ];
 });
 _c = LoginModal;
@@ -1262,1044 +1276,6 @@ _c = PageLoader;
 const __TURBOPACK__default__export__ = PageLoader;
 var _c;
 __turbopack_context__.k.register(_c, "PageLoader");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/hooks/useLoadGoogleMaps.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "default",
-    ()=>useLoadGoogleMaps
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var _s = __turbopack_context__.k.signature();
-;
-function useLoadGoogleMaps() {
-    _s();
-    const [loaded, setLoaded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "useLoadGoogleMaps.useEffect": ()=>{
-            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-            ;
-            const checkGoogle = {
-                "useLoadGoogleMaps.useEffect.checkGoogle": ()=>typeof google !== "undefined"
-            }["useLoadGoogleMaps.useEffect.checkGoogle"];
-            if (checkGoogle()) {
-                setLoaded(true);
-            } else {
-                const interval = setInterval({
-                    "useLoadGoogleMaps.useEffect.interval": ()=>{
-                        if (checkGoogle()) {
-                            setLoaded(true);
-                            clearInterval(interval);
-                        }
-                    }
-                }["useLoadGoogleMaps.useEffect.interval"], 100);
-                return ({
-                    "useLoadGoogleMaps.useEffect": ()=>clearInterval(interval)
-                })["useLoadGoogleMaps.useEffect"];
-            }
-        }
-    }["useLoadGoogleMaps.useEffect"], []);
-    return loaded;
-}
-_s(useLoadGoogleMaps, "I8RUn14npbk54TheiKdNt4wCpsU=");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/components/OrderAddressModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "default",
-    ()=>OrderAddressModal
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hooks/useLoadGoogleMaps.ts [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-"use client";
-;
-;
-;
-function OrderAddressModal() {
-    _s();
-    const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress, openCheckoutSummary } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
-    const [mode, setMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("map");
-    const [manualAddress, setManualAddress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [selectedLocation, setSelectedLocation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [resolvedAddress, setResolvedAddress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(""); // new state
-    const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const autocompleteRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const googleLoaded = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
-    /** Reverse geocode function */ const reverseGeocode = (lat, lng)=>{
-        const geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-            location: {
-                lat,
-                lng
-            }
-        }, (results, status)=>{
-            if (status === "OK" && results && results[0]) {
-                setResolvedAddress(results[0].formatted_address);
-            } else {
-                setResolvedAddress("Address not found");
-            }
-        });
-    };
-    /** Initialize Google Map */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "OrderAddressModal.useEffect": ()=>{
-            if (!googleLoaded || !mapRef.current || mode !== "map") return;
-            const map = new google.maps.Map(mapRef.current, {
-                center: {
-                    lat: 14.5995,
-                    lng: 120.9842
-                },
-                zoom: 14
-            });
-            const marker = new google.maps.Marker({
-                map,
-                draggable: true,
-                position: map.getCenter()
-            });
-            const initialPos = map.getCenter().toJSON();
-            setSelectedLocation(initialPos);
-            reverseGeocode(initialPos.lat, initialPos.lng); // reverse geocode initial position
-            marker.addListener("dragend", {
-                "OrderAddressModal.useEffect": ()=>{
-                    const pos = marker.getPosition().toJSON();
-                    setSelectedLocation(pos);
-                    reverseGeocode(pos.lat, pos.lng); // reverse geocode on drag
-                }
-            }["OrderAddressModal.useEffect"]);
-            map.addListener("click", {
-                "OrderAddressModal.useEffect": (e)=>{
-                    if (!e.latLng) return;
-                    const pos = e.latLng.toJSON();
-                    marker.setPosition(e.latLng);
-                    setSelectedLocation(pos);
-                    reverseGeocode(pos.lat, pos.lng); // reverse geocode on click
-                }
-            }["OrderAddressModal.useEffect"]);
-        }
-    }["OrderAddressModal.useEffect"], [
-        googleLoaded,
-        mode
-    ]);
-    /** Initialize Autocomplete */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "OrderAddressModal.useEffect": ()=>{
-            if (!googleLoaded || mode !== "manual" || !autocompleteRef.current) return;
-            const autocomplete = new google.maps.places.Autocomplete(autocompleteRef.current, {
-                fields: [
-                    "formatted_address",
-                    "geometry"
-                ]
-            });
-            autocomplete.addListener("place_changed", {
-                "OrderAddressModal.useEffect": ()=>{
-                    const place = autocomplete.getPlace();
-                    if (!place.formatted_address || !place.geometry?.location) return;
-                    setManualAddress(place.formatted_address);
-                    setSelectedLocation(place.geometry.location.toJSON());
-                    setResolvedAddress(place.formatted_address); // also update resolvedAddress
-                }
-            }["OrderAddressModal.useEffect"]);
-        }
-    }["OrderAddressModal.useEffect"], [
-        googleLoaded,
-        mode
-    ]);
-    /** Save Address */ const handleSave = ()=>{
-        if (!selectedLocation) return;
-        saveAddress({
-            address: resolvedAddress || manualAddress || "Pinned on map",
-            coordinates: selectedLocation
-        });
-        closeOrderAddressModal();
-        openCheckoutSummary();
-    };
-    if (!isOrderAddressModalOpen) return null;
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-white p-6 rounded-lg w-11/12 max-w-md animate-fadeIn",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-xl font-bold mb-4",
-                    children: "Select Delivery Address"
-                }, void 0, false, {
-                    fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 109,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex space-x-2 mb-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>setMode("map"),
-                            className: `px-2 py-1 rounded ${mode === "map" ? "bg-blue-500 text-white" : "bg-gray-200"}`,
-                            children: "📍 Pick from Map"
-                        }, void 0, false, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 112,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>setMode("manual"),
-                            className: `px-2 py-1 rounded ${mode === "manual" ? "bg-blue-500 text-white" : "bg-gray-200"}`,
-                            children: "✏️ Enter Address"
-                        }, void 0, false, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 120,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 111,
-                    columnNumber: 9
-                }, this),
-                mode === "map" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            ref: mapRef,
-                            style: {
-                                width: "100%",
-                                height: 300,
-                                borderRadius: 8
-                            }
-                        }, void 0, false, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 132,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "mt-2 text-gray-700",
-                            children: [
-                                "Selected Address: ",
-                                resolvedAddress || "Loading..."
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 136,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true),
-                mode === "manual" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        ref: autocompleteRef,
-                        type: "text",
-                        placeholder: "Enter your address",
-                        className: "border p-2 w-full rounded"
-                    }, void 0, false, {
-                        fileName: "[project]/components/OrderAddressModal.tsx",
-                        lineNumber: 144,
-                        columnNumber: 13
-                    }, this)
-                }, void 0, false),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex justify-end space-x-2 mt-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-gray-300 rounded",
-                            onClick: closeOrderAddressModal,
-                            children: "Close"
-                        }, void 0, false, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 154,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-green-600 text-white rounded",
-                            onClick: handleSave,
-                            children: "Save Address"
-                        }, void 0, false, {
-                            fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 160,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 153,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/OrderAddressModal.tsx",
-            lineNumber: 108,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/components/OrderAddressModal.tsx",
-        lineNumber: 107,
-        columnNumber: 5
-    }, this);
-}
-_s(OrderAddressModal, "XJphReuMKGVRgU7rG/pMmxoxkWg=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
-    ];
-});
-_c = OrderAddressModal;
-var _c;
-__turbopack_context__.k.register(_c, "OrderAddressModal");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/components/CheckoutSummaryModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "default",
-    ()=>CheckoutSummaryModal
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-"use client";
-;
-function CheckoutSummaryModal() {
-    _s();
-    const { cart, increaseQuantity, decreaseQuantity, totalPrice, address, phone, email, closeCheckoutSummary, isCheckoutSummaryModalOpen, openOrderAddressModal, openPaymentModal } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
-    if (!isCheckoutSummaryModalOpen) return null;
-    const TAX_RATE = 0.12; // 12% tax
-    const DELIVERY_CHARGE = 50; // flat delivery fee
-    const tax = totalPrice * TAX_RATE;
-    const grandTotal = totalPrice + tax + DELIVERY_CHARGE;
-    /** Edit address handler */ const handleEditAddress = ()=>{
-        closeCheckoutSummary(); // close current summary
-        openOrderAddressModal(); // open address modal
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-white p-6 rounded-lg w-11/12 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl animate-fadeIn overflow-y-auto max-h-[90vh]",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-xl font-bold mb-4",
-                    children: "Checkout Summary"
-                }, void 0, false, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 37,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "font-semibold mb-2",
-                            children: "Items:"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 41,
-                            columnNumber: 11
-                        }, this),
-                        cart.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            children: "No items in cart."
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 42,
-                            columnNumber: 33
-                        }, this),
-                        cart.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex justify-between items-center mb-1",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex-1",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "font-medium text-sm sm:text-base",
-                                                children: item.name
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                lineNumber: 49,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex space-x-1 mt-1",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        onClick: ()=>decreaseQuantity(item.name),
-                                                        className: "px-2 py-1 bg-gray-200 rounded text-sm",
-                                                        children: "-"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 51,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "px-2 text-sm sm:text-base",
-                                                        children: item.quantity
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 57,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        onClick: ()=>increaseQuantity(item.name),
-                                                        className: "px-2 py-1 bg-gray-200 rounded text-sm",
-                                                        children: "+"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 60,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                lineNumber: 50,
-                                                columnNumber: 17
-                                            }, this),
-                                            item.addOns && item.addOns.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs sm:text-sm text-mute mt-1",
-                                                children: [
-                                                    "Add-ons: ",
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
-                                                        children: item.addOns.join(", ")
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                        lineNumber: 69,
-                                                        columnNumber: 30
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                                lineNumber: 68,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                        lineNumber: 48,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-sm sm:text-base",
-                                        children: [
-                                            "$",
-                                            (item.price * item.quantity).toFixed(2)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, item.name, true, {
-                                fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                lineNumber: 44,
-                                columnNumber: 13
-                            }, this))
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 40,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {}, void 0, false, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 79,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-4 mt-2",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "font-semibold mb-1 flex justify-between items-center",
-                            children: [
-                                "Delivery Address:",
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "text-blue-500 underline text-xs sm:text-sm",
-                                    onClick: handleEditAddress,
-                                    children: "Edit"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 85,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 83,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-sm sm:text-base",
-                            children: address?.address || "No address selected"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 92,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 82,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "font-semibold mb-1",
-                            children: "Contact Details:"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 99,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-sm sm:text-base",
-                            children: phone || email || "No contact info"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 100,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 98,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-4 border-t pt-2",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between text-sm sm:text-base",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "Subtotal:"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 108,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: [
-                                        "$",
-                                        totalPrice.toFixed(2)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 109,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 107,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between text-sm sm:text-base",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "Tax (12%):"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 112,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: [
-                                        "$",
-                                        tax.toFixed(2)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 113,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 111,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between text-sm sm:text-base",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "Delivery:"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 116,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: [
-                                        "$",
-                                        DELIVERY_CHARGE.toFixed(2)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 117,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 115,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-between font-bold mt-2 text-sm sm:text-base",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "Grand Total:"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 120,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: [
-                                        "$",
-                                        grandTotal.toFixed(2)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                                    lineNumber: 121,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 119,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 106,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex justify-end space-x-2 mt-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-gray-300 rounded text-sm sm:text-base",
-                            onClick: closeCheckoutSummary,
-                            children: "Close"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 127,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-green-600 text-white rounded text-sm sm:text-base",
-                            onClick: ()=>{
-                                closeCheckoutSummary(); // close this modal
-                                openPaymentModal(); // open RazorPay payment modal
-                            },
-                            children: "Checkout"
-                        }, void 0, false, {
-                            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                            lineNumber: 133,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/CheckoutSummaryModal.tsx",
-                    lineNumber: 126,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/CheckoutSummaryModal.tsx",
-            lineNumber: 36,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/components/CheckoutSummaryModal.tsx",
-        lineNumber: 35,
-        columnNumber: 5
-    }, this);
-}
-_s(CheckoutSummaryModal, "4lB5qtz7CjpgVXqjM1CGVDMQH8c=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
-    ];
-});
-_c = CheckoutSummaryModal;
-var _c;
-__turbopack_context__.k.register(_c, "CheckoutSummaryModal");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/components/PaymentModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-// components/PaymentModal.tsx
-__turbopack_context__.s([
-    "default",
-    ()=>PaymentModal
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-"use client";
-;
-;
-;
-function PaymentModal() {
-    _s();
-    const { isPaymentModalOpen, closePaymentModal, totalPrice, clearCart, phone, email, cart } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    if (!isPaymentModalOpen) return null;
-    const openRazorpayCheckout = ()=>{
-        // Pass phone & email to order-success page
-        sessionStorage.setItem("orderPhone", phone || "");
-        sessionStorage.setItem("orderEmail", email || "");
-        // Pass order summary
-        sessionStorage.setItem("orderSummary", JSON.stringify(cart));
-        const options = {
-            key: "YOUR_RAZORPAY_KEY_ID",
-            amount: totalPrice * 100,
-            currency: "INR",
-            name: "Smoothies & More",
-            description: "Order Payment",
-            handler: function(response) {
-                console.log("Payment Success: ", response);
-                console.log("Payment Success: ", response);
-                // Pass phone & email to order-success page
-                sessionStorage.setItem("orderPhone", phone || "");
-                sessionStorage.setItem("orderEmail", email || "");
-                // Pass order summary
-                sessionStorage.setItem("orderSummary", JSON.stringify(cart));
-                clearCart();
-                closePaymentModal();
-                router.push("/order-success");
-            },
-            modal: {
-                ondismiss: ()=>{
-                    console.log("Razorpay closed");
-                }
-            }
-        };
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-        setTimeout(()=>{
-            closePaymentModal(), router.push("/order-success"), clearCart();
-        }, 3000);
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "PaymentModal.useEffect": ()=>{
-            // Ensure Razorpay script is loaded
-            const script = document.createElement("script");
-            script.src = "https://checkout.razorpay.com/v1/checkout.js";
-            script.async = true;
-            document.body.appendChild(script);
-        }
-    }["PaymentModal.useEffect"], []);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-white p-6 rounded-lg w-11/12 max-w-md",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-xl font-bold mb-4",
-                    children: "Payment"
-                }, void 0, false, {
-                    fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 76,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "mb-4",
-                    children: [
-                        "You will pay: ₹",
-                        totalPrice
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 78,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex justify-end space-x-2",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-gray-300 rounded",
-                            onClick: closePaymentModal,
-                            children: "Close"
-                        }, void 0, false, {
-                            fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 81,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "px-4 py-2 bg-green-600 text-white rounded",
-                            onClick: openRazorpayCheckout,
-                            children: "Pay with Razorpay"
-                        }, void 0, false, {
-                            fileName: "[project]/components/PaymentModal.tsx",
-                            lineNumber: 88,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/PaymentModal.tsx",
-                    lineNumber: 80,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/PaymentModal.tsx",
-            lineNumber: 75,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/components/PaymentModal.tsx",
-        lineNumber: 74,
-        columnNumber: 5
-    }, this);
-}
-_s(PaymentModal, "/eMd/Ykgbz12EfZhisi3qNiUGG8=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
-_c = PaymentModal;
-var _c;
-__turbopack_context__.k.register(_c, "PaymentModal");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/context/CartContext.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-// context/CartContext.tsx
-__turbopack_context__.s([
-    "CartProvider",
-    ()=>CartProvider,
-    "useCart",
-    ()=>useCart
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Toast$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Toast.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$OrderAddressModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/OrderAddressModal.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CheckoutSummaryModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/CheckoutSummaryModal.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PaymentModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/PaymentModal.tsx [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
-"use client";
-;
-;
-;
-;
-;
-;
-const CartContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])(undefined);
-const useCart = ()=>{
-    _s();
-    const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(CartContext);
-    if (!context) throw new Error("useCart must be used within CartProvider");
-    return context;
-};
-_s(useCart, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
-const CartProvider = ({ children })=>{
-    _s1();
-    const [cart, setCart] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [isOrderModalOpen, setOrderModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isValidationModalOpen, setValidationModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isSummaryModalOpen, setSummaryModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [toast, setToast] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [isOtpModalOpen, setOtpModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [otp, setOtp] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [phone, setPhone] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const [isOrderAddressModalOpen, setOrderAddressModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [address, setAddress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [isCheckoutSummaryModalOpen, setCheckoutSummaryModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const clearCart = ()=>setCart([]);
-    // Function to show toast
-    const showToast = (message, type = "success")=>{
-        setToast({
-            message,
-            type
-        });
-    };
-    const addToCart = (item)=>{
-        setCart((prev)=>{
-            const existing = prev.find((i)=>i.name === item.name && JSON.stringify(i.addOns || []) === JSON.stringify(item.addOns || []));
-            if (existing) {
-                showToast(`${item.name} quantity increased`, "success");
-                return prev.map((i)=>i === existing ? {
-                        ...i,
-                        quantity: i.quantity + 1
-                    } : i);
-            }
-            showToast(`${item.name} added to cart`, "success");
-            return [
-                ...prev,
-                {
-                    ...item,
-                    quantity: 1
-                }
-            ];
-        });
-    };
-    const updateItemAddOns = (itemName, addOns)=>{
-        setCart((prev)=>prev.map((i)=>i.name === itemName ? {
-                    ...i,
-                    addOns
-                } // update add-ons only
-                 : i));
-    };
-    const increaseQuantity = (name)=>{
-        setCart((prev)=>prev.map((i)=>{
-                if (i.name === name) showToast(`${name} quantity increased`, "success");
-                return i.name === name ? {
-                    ...i,
-                    quantity: i.quantity + 1
-                } : i;
-            }));
-    };
-    const decreaseQuantity = (name)=>{
-        setCart((prev)=>prev.map((i)=>{
-                if (i.name === name) showToast(`${name} quantity decreased`, "success");
-                return i.name === name ? {
-                    ...i,
-                    quantity: i.quantity - 1
-                } : i;
-            }).filter((i)=>i.quantity > 0));
-    };
-    const cartCount = cart.reduce((acc, i)=>acc + i.quantity, 0);
-    const totalPrice = cart.reduce((acc, i)=>acc + i.price * i.quantity, 0);
-    const openOrderModal = ()=>setOrderModalOpen(true);
-    const closeOrderModal = ()=>setOrderModalOpen(false);
-    const openOrderSummary = ()=>setSummaryModalOpen(true);
-    const closeOrderSummary = ()=>setSummaryModalOpen(false);
-    const openValidationModal = ()=>setValidationModalOpen(true);
-    const closeValidationModal = ()=>setValidationModalOpen(false);
-    const openOtpModal = ()=>setOtpModalOpen(true);
-    const closeOtpModal = ()=>setOtpModalOpen(false);
-    const openOrderAddressModal = ()=>setOrderAddressModalOpen(true);
-    const closeOrderAddressModal = ()=>setOrderAddressModalOpen(false);
-    const openCheckoutSummary = ()=>setCheckoutSummaryModalOpen(true);
-    const closeCheckoutSummary = ()=>setCheckoutSummaryModalOpen(false);
-    const [isPaymentModalOpen, setPaymentModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const openPaymentModal = ()=>setPaymentModalOpen(true);
-    const closePaymentModal = ()=>setPaymentModalOpen(false);
-    const generateOtp = (phoneInput, emailInput)=>{
-        const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
-        setOtp(newOtp);
-        setPhone(phoneInput);
-        setEmail(emailInput || "");
-        console.log("OTP sent:", newOtp, "to", phoneInput, emailInput);
-    };
-    const validateOtp = (input)=>{
-        if (input === otp) {
-            closeOtpModal(); // Close OTP modal
-            openOrderAddressModal(); // ⬅️ Show your address modal
-            return true;
-        }
-        return false;
-    };
-    const saveAddress = (data)=>{
-        setAddress(data);
-        console.log("Saved Address:", data);
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CartContext.Provider, {
-        value: {
-            cart,
-            addToCart,
-            increaseQuantity,
-            decreaseQuantity,
-            cartCount,
-            totalPrice,
-            isOrderModalOpen,
-            openOrderModal,
-            closeOrderModal,
-            isSummaryModalOpen,
-            openOrderSummary,
-            closeOrderSummary,
-            isValidationModalOpen,
-            openValidationModal,
-            closeValidationModal,
-            isOtpModalOpen,
-            openOtpModal,
-            closeOtpModal,
-            generateOtp,
-            validateOtp,
-            phone,
-            email,
-            isOrderAddressModalOpen,
-            openOrderAddressModal,
-            closeOrderAddressModal,
-            address,
-            saveAddress,
-            isCheckoutSummaryModalOpen,
-            openCheckoutSummary,
-            closeCheckoutSummary,
-            updateItemAddOns,
-            isPaymentModalOpen,
-            openPaymentModal,
-            closePaymentModal,
-            clearCart
-        },
-        children: [
-            children,
-            toast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Toast$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                message: toast.message,
-                type: toast.type,
-                onClose: ()=>setToast(null)
-            }, void 0, false, {
-                fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 252,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
-            isOrderAddressModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$OrderAddressModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 258,
-                columnNumber: 35
-            }, ("TURBOPACK compile-time value", void 0)),
-            isCheckoutSummaryModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CheckoutSummaryModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 259,
-                columnNumber: 38
-            }, ("TURBOPACK compile-time value", void 0)),
-            isPaymentModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PaymentModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 260,
-                columnNumber: 30
-            }, ("TURBOPACK compile-time value", void 0))
-        ]
-    }, void 0, true, {
-        fileName: "[project]/context/CartContext.tsx",
-        lineNumber: 211,
-        columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0));
-};
-_s1(CartProvider, "3NYJpiOZNN0MGPGh0g9RgcZDb8o=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
-_c = CartProvider;
-var _c;
-__turbopack_context__.k.register(_c, "CartProvider");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -3414,4 +2390,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=_c7be743d._.js.map
+//# sourceMappingURL=_a5f1a119._.js.map

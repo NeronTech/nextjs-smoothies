@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 import useLoadGoogleMaps from "../hooks/useLoadGoogleMaps";
 
 export default function OrderAddressModal() {
-  const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress, openCheckoutSummary   } =
+  const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress, openCheckoutSummary, addressModalTrigger   } =
     useCart();
 
   const [mode, setMode] = useState<"map" | "manual">("map");
@@ -155,7 +155,7 @@ export default function OrderAddressModal() {
             className="px-4 py-2 bg-gray-300 rounded"
             onClick={closeOrderAddressModal}
           >
-            Close
+            {addressModalTrigger === "login" ? "Skip for now" : "Close"}
           </button>
           <button
             className="px-4 py-2 bg-green-600 text-white rounded"

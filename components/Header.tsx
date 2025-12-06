@@ -180,7 +180,7 @@ export default function Header() {
         {user && (
           <div className="flex flex-col items-end text-right space-x-3 pr-6">
             <span className="text-gray-800 text-xs">
-              Hello, <b>{user.fullName.split(" ")[0]}!</b>
+              Hello, <b>{(user.fullName ?? "User").split(" ")[0]}!</b>
             </span>
           </div>
         )}

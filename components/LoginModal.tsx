@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
+import { useCart } from "../context/CartContext";
 
 interface LoginModalProps {
   onClose: () => void;
@@ -13,6 +14,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     password: "",
   });
   const [error, setError] = useState("");
+  const { openOrderAddressModal } = useCart();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +28,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
 
     // Check if user exists in localStorage
     const users = JSON.parse(localStorage.getItem("userProfile") || "[]");
-    console.log(users); // now should be an array
+    // console.log(users); // now should be an array
     const matchedUser = users.find(
       (u: any) =>
         (u.username === usernameOrEmail || u.email === usernameOrEmail) &&
@@ -36,6 +38,10 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     if (matchedUser) {
       loginUser(matchedUser); // update context
       onClose(); // close modal
+      // ⭐ CHECK IF THE USER HAS NO ADDRESS
+      if (!matchedUser.address || matchedUser.address === "") {
+        openOrderAddressModal("login"); // prompt for address if none saved
+      }
     } else {
       setError("Invalid username/email or password");
     }

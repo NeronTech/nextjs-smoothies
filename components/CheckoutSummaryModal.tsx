@@ -28,7 +28,7 @@ export default function CheckoutSummaryModal() {
   /** Edit address handler */
   const handleEditAddress = () => {
     closeCheckoutSummary(); // close current summary
-    openOrderAddressModal(); // open address modal
+    openOrderAddressModal("checkout"); // open address modal'); 
   };
 
   return (

@@ -44,8 +44,9 @@ interface CartContextType {
   phone: string;
   email?: string;
   isOrderAddressModalOpen: boolean;
-  openOrderAddressModal: () => void;
+  openOrderAddressModal: (trigger: "login" | "checkout") => void;
   closeOrderAddressModal: () => void;
+  addressModalTrigger: "login" | "checkout" | null;
   address: {
     address: string;
     coordinates: { lat: number; lng: number };
@@ -95,6 +96,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   } | null>(null);
   const [isCheckoutSummaryModalOpen, setCheckoutSummaryModalOpen] =
     useState(false);
+  const [addressModalTrigger, setAddressModalTrigger] = useState<
+    "login" | "checkout" | null
+  >(null);
 
   const clearCart = () => setCart([]);
 
@@ -174,8 +178,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const openOtpModal = () => setOtpModalOpen(true);
   const closeOtpModal = () => setOtpModalOpen(false);
 
-  const openOrderAddressModal = () => setOrderAddressModalOpen(true);
-  const closeOrderAddressModal = () => setOrderAddressModalOpen(false);
+  const openOrderAddressModal = (trigger: "login" | "checkout") => {
+    setAddressModalTrigger(trigger);
+    setOrderAddressModalOpen(true);
+  };
+  const closeOrderAddressModal = () => {
+    setOrderAddressModalOpen(false);
+    setAddressModalTrigger(null);
+  };
 
   const openCheckoutSummary = () => setCheckoutSummaryModalOpen(true);
   const closeCheckoutSummary = () => setCheckoutSummaryModalOpen(false);
@@ -196,7 +206,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const validateOtp = (input: string) => {
     if (input === otp) {
       closeOtpModal(); // Close OTP modal
-      openOrderAddressModal(); // ⬅️ Show your address modal
+      openOrderAddressModal("checkout"); // ⬅️ Show your address modal
       return true;
     }
     return false;
@@ -235,6 +245,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         isOrderAddressModalOpen,
         openOrderAddressModal,
         closeOrderAddressModal,
+        addressModalTrigger,
         address,
         saveAddress,
         isCheckoutSummaryModalOpen,
