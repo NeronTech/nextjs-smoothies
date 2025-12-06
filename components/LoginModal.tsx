@@ -27,13 +27,14 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     const { usernameOrEmail, password } = formData;
 
     // Check if user exists in localStorage
-    const users = JSON.parse(localStorage.getItem("userProfile") || "[]");
-    // console.log(users); // now should be an array
-    const matchedUser = users.find(
-      (u: any) =>
-        (u.username === usernameOrEmail || u.email === usernameOrEmail) &&
-        u.password === password
-    );
+    const users = JSON.parse(localStorage.getItem("userProfile") || "null");
+    console.log(users);
+    const matchedUser =
+      users &&
+      (users.username === usernameOrEmail || users.email === usernameOrEmail) &&
+      users.password === password
+        ? users
+        : null;
 
     if (matchedUser) {
       loginUser(matchedUser); // update context

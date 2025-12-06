@@ -3,10 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "../context/CartContext";
 import useLoadGoogleMaps from "../hooks/useLoadGoogleMaps";
+import { useUser } from "../context/UserContext";
 
 export default function OrderAddressModal() {
-  const { isOrderAddressModalOpen, closeOrderAddressModal, saveAddress, openCheckoutSummary, addressModalTrigger   } =
-    useCart();
+  const {
+    isOrderAddressModalOpen,
+    closeOrderAddressModal,
+    saveAddress,
+    openCheckoutSummary,
+    addressModalTrigger,
+  } = useCart();
 
   const [mode, setMode] = useState<"map" | "manual">("map");
   const [manualAddress, setManualAddress] = useState("");
@@ -20,6 +26,7 @@ export default function OrderAddressModal() {
   const autocompleteRef = useRef<HTMLInputElement>(null);
 
   const googleLoaded = useLoadGoogleMaps();
+  const { saveUserAddress } = useUser();
 
   /** Reverse geocode function */
   const reverseGeocode = (lat: number, lng: number) => {
@@ -97,8 +104,13 @@ export default function OrderAddressModal() {
       coordinates: selectedLocation,
     });
 
+    saveUserAddress({
+      address: resolvedAddress || manualAddress || "Pinned on map",
+      coordinates: selectedLocation,
+    }); // NEW (User Profile)
+
     closeOrderAddressModal();
-    openCheckoutSummary();
+    addressModalTrigger === "checkout" && openCheckoutSummary();
   };
 
   if (!isOrderAddressModalOpen) return null;

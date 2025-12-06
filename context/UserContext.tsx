@@ -7,6 +7,13 @@ interface UserProfile {
   email: string;
   username: string;
   password: string;
+  address?: {
+    address: string;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
+  };
 }
 
 interface UserContextType {
@@ -15,6 +22,10 @@ interface UserContextType {
   registerUser: (user: UserProfile) => void;
   logout: () => void;
   loginUser: (user: any) => void;
+  saveUserAddress: (addr: {
+    address: string;
+    coordinates: { lat: number; lng: number };
+  }) => void;
 }
 
 const UserContext = createContext<UserContextType>({
@@ -23,6 +34,7 @@ const UserContext = createContext<UserContextType>({
   registerUser: () => {},
   logout: () => {},
   loginUser: () => {},
+  saveUserAddress: () => {},
 });
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
@@ -34,16 +46,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   };
 
   const registerUser = (userData: UserProfile) => {
-    // Load existing users or empty array
-    const existingUsers = JSON.parse(
-      localStorage.getItem("userProfile") || "[]"
-    );
-
-    // Add the new user
-    const updatedUsers = [...existingUsers, userData];
-
     // Save back to localStorage
-    localStorage.setItem("userProfile", JSON.stringify(updatedUsers));
+    localStorage.setItem("userProfile", JSON.stringify(userData));
 
     // Optionally, set the logged-in user
     setUser(userData);
@@ -59,13 +63,37 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   };
 
+  const saveUserAddress = (addr: {
+    address: string;
+    coordinates: { lat: number; lng: number };
+  }) => {
+    if (!user) return;
+
+    const updatedUser = {
+      ...user,
+      address: addr,
+    };
+
+    setUser(updatedUser);
+
+    // Save back to localStorage
+    localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+  };
+
   useEffect(() => {
     loadUser();
   }, []);
 
   return (
     <UserContext.Provider
-      value={{ user, loadUser, registerUser, logout, loginUser }}
+      value={{
+        user,
+        loadUser,
+        registerUser,
+        logout,
+        loginUser,
+        saveUserAddress,
+      }}
     >
       {children}
     </UserContext.Provider>

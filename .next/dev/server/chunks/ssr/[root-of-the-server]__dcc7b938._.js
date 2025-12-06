@@ -24,7 +24,8 @@ const UserContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
     loadUser: ()=>{},
     registerUser: ()=>{},
     logout: ()=>{},
-    loginUser: ()=>{}
+    loginUser: ()=>{},
+    saveUserAddress: ()=>{}
 });
 function UserProvider({ children }) {
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -33,15 +34,8 @@ function UserProvider({ children }) {
         if (stored) setUser(JSON.parse(stored));
     };
     const registerUser = (userData)=>{
-        // Load existing users or empty array
-        const existingUsers = JSON.parse(localStorage.getItem("userProfile") || "[]");
-        // Add the new user
-        const updatedUsers = [
-            ...existingUsers,
-            userData
-        ];
         // Save back to localStorage
-        localStorage.setItem("userProfile", JSON.stringify(updatedUsers));
+        localStorage.setItem("userProfile", JSON.stringify(userData));
         // Optionally, set the logged-in user
         setUser(userData);
     };
@@ -53,6 +47,16 @@ function UserProvider({ children }) {
         // localStorage.removeItem("userProfile");
         setUser(null);
     };
+    const saveUserAddress = (addr)=>{
+        if (!user) return;
+        const updatedUser = {
+            ...user,
+            address: addr
+        };
+        setUser(updatedUser);
+        // Save back to localStorage
+        localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+    };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         loadUser();
     }, []);
@@ -62,12 +66,13 @@ function UserProvider({ children }) {
             loadUser,
             registerUser,
             logout,
-            loginUser
+            loginUser,
+            saveUserAddress
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/context/UserContext.tsx",
-        lineNumber: 67,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }
@@ -815,7 +820,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hooks/useLoadGoogleMaps.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/UserContext.tsx [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -829,6 +836,7 @@ function OrderAddressModal() {
     const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const autocompleteRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const googleLoaded = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])();
+    const { saveUserAddress } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUser"])();
     /** Reverse geocode function */ const reverseGeocode = (lat, lng)=>{
         const geocoder = new google.maps.Geocoder();
         geocoder.geocode({
@@ -902,8 +910,12 @@ function OrderAddressModal() {
             address: resolvedAddress || manualAddress || "Pinned on map",
             coordinates: selectedLocation
         });
+        saveUserAddress({
+            address: resolvedAddress || manualAddress || "Pinned on map",
+            coordinates: selectedLocation
+        }); // NEW (User Profile)
         closeOrderAddressModal();
-        openCheckoutSummary();
+        addressModalTrigger === "checkout" && openCheckoutSummary();
     };
     if (!isOrderAddressModalOpen) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -916,7 +928,7 @@ function OrderAddressModal() {
                     children: "Select Delivery Address"
                 }, void 0, false, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 109,
+                    lineNumber: 121,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -928,7 +940,7 @@ function OrderAddressModal() {
                             children: "📍 Pick from Map"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 112,
+                            lineNumber: 124,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -937,13 +949,13 @@ function OrderAddressModal() {
                             children: "✏️ Enter Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 120,
+                            lineNumber: 132,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 111,
+                    lineNumber: 123,
                     columnNumber: 9
                 }, this),
                 mode === "map" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -957,7 +969,7 @@ function OrderAddressModal() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 132,
+                            lineNumber: 144,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -968,7 +980,7 @@ function OrderAddressModal() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 136,
+                            lineNumber: 148,
                             columnNumber: 13
                         }, this)
                     ]
@@ -981,7 +993,7 @@ function OrderAddressModal() {
                         className: "border p-2 w-full rounded"
                     }, void 0, false, {
                         fileName: "[project]/components/OrderAddressModal.tsx",
-                        lineNumber: 144,
+                        lineNumber: 156,
                         columnNumber: 13
                     }, this)
                 }, void 0, false),
@@ -994,7 +1006,7 @@ function OrderAddressModal() {
                             children: addressModalTrigger === "login" ? "Skip for now" : "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 154,
+                            lineNumber: 166,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1003,24 +1015,24 @@ function OrderAddressModal() {
                             children: "Save Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 160,
+                            lineNumber: 172,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 153,
+                    lineNumber: 165,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/OrderAddressModal.tsx",
-            lineNumber: 108,
+            lineNumber: 120,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/OrderAddressModal.tsx",
-        lineNumber: 107,
+        lineNumber: 119,
         columnNumber: 5
     }, this);
 }
@@ -1773,9 +1785,9 @@ function LoginModal({ onClose }) {
         setError("");
         const { usernameOrEmail, password } = formData;
         // Check if user exists in localStorage
-        const users = JSON.parse(localStorage.getItem("userProfile") || "[]");
-        // console.log(users); // now should be an array
-        const matchedUser = users.find((u)=>(u.username === usernameOrEmail || u.email === usernameOrEmail) && u.password === password);
+        const users = JSON.parse(localStorage.getItem("userProfile") || "null");
+        console.log(users);
+        const matchedUser = users && (users.username === usernameOrEmail || users.email === usernameOrEmail) && users.password === password ? users : null;
         if (matchedUser) {
             loginUser(matchedUser); // update context
             onClose(); // close modal
@@ -1798,7 +1810,7 @@ function LoginModal({ onClose }) {
                     children: "✕"
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 53,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1806,7 +1818,7 @@ function LoginModal({ onClose }) {
                     children: "Login"
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 59,
+                    lineNumber: 60,
                     columnNumber: 9
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1814,7 +1826,7 @@ function LoginModal({ onClose }) {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 61,
+                    lineNumber: 62,
                     columnNumber: 19
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1828,7 +1840,7 @@ function LoginModal({ onClose }) {
                                     children: "Username or Email"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 65,
+                                    lineNumber: 66,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1840,13 +1852,13 @@ function LoginModal({ onClose }) {
                                     className: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 64,
+                            lineNumber: 65,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1856,7 +1868,7 @@ function LoginModal({ onClose }) {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 79,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1868,13 +1880,13 @@ function LoginModal({ onClose }) {
                                     className: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
                                 }, void 0, false, {
                                     fileName: "[project]/components/LoginModal.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 83,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 78,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1883,24 +1895,24 @@ function LoginModal({ onClose }) {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/components/LoginModal.tsx",
-                            lineNumber: 92,
+                            lineNumber: 93,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/LoginModal.tsx",
-                    lineNumber: 63,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/LoginModal.tsx",
-            lineNumber: 52,
+            lineNumber: 53,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/LoginModal.tsx",
-        lineNumber: 51,
+        lineNumber: 52,
         columnNumber: 5
     }, this);
 }
