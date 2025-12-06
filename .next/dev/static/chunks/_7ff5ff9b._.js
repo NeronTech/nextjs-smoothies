@@ -32,13 +32,13 @@ function UserProvider({ children }) {
         localStorage.setItem("userProfile", JSON.stringify(userData));
         setUser(userData);
     };
+    const loginUser = (userData)=>{
+        localStorage.setItem("userProfile", JSON.stringify(userData));
+        setUser(userData);
+    };
     const logout = ()=>{
         localStorage.removeItem("userProfile");
         setUser(null);
-    };
-    const loginUser = (user)=>{
-        setUser(user);
-        localStorage.setItem("currentUser", JSON.stringify(user));
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "UserProvider.useEffect": ()=>{
@@ -930,7 +930,10 @@ function PwaInstallModal({ isOpen, onClose }) {
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: onClose,
+                                    onClick: ()=>{
+                                        setShowLogin(true); // open LoginModal
+                                        onClose(); // close PwaInstallModal
+                                    },
                                     className: "px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md",
                                     children: "Login"
                                 }, void 0, false, {
@@ -944,14 +947,14 @@ function PwaInstallModal({ isOpen, onClose }) {
                             onClose: closeModal
                         }, void 0, false, {
                             fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 84,
+                            lineNumber: 87,
                             columnNumber: 27
                         }, this),
                         showLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$LoginModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             onClose: ()=>setShowLogin(false)
                         }, void 0, false, {
                             fileName: "[project]/components/PwaInstallModal.tsx",
-                            lineNumber: 85,
+                            lineNumber: 88,
                             columnNumber: 25
                         }, this)
                     ]

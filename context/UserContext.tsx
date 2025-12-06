@@ -37,14 +37,14 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setUser(userData);
   };
 
+  const loginUser = (userData: UserProfile) => {
+    localStorage.setItem("userProfile", JSON.stringify(userData));
+    setUser(userData);
+  };
+
   const logout = () => {
     localStorage.removeItem("userProfile");
     setUser(null);
-  };
-
-  const loginUser = (user: any) => {
-    setUser(user);
-    localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
   useEffect(() => {

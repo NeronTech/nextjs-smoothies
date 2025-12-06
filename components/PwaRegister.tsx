@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import PwaInstallModal from "./PwaInstallModal";
 import { useUser } from "../context/UserContext";
+import LoginModal from "./LoginModal";
 
 export default function PwaRegister({
   children,
@@ -14,6 +15,7 @@ export default function PwaRegister({
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showBanner, setShowBanner] = useState(false);
   const [isPwaInstalled, setIsPwaInstalled] = useState(false); // new
+  const [showLogin, setShowLogin] = useState(false);
 
   // Load user from localStorage
   useEffect(() => {
@@ -122,7 +124,14 @@ export default function PwaRegister({
         </div>
       )}
 
-      {showModal && <PwaInstallModal isOpen={true} onClose={closeModal} />}
+      {showModal && (
+        <PwaInstallModal
+          isOpen={true}
+          onClose={closeModal}
+          openLogin={() => setShowLogin(true)}
+        />
+      )}
+      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </>
   );
 }

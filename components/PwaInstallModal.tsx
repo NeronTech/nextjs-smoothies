@@ -7,17 +7,18 @@ import LoginModal from "./LoginModal";
 interface PwaInstallModalProps {
   isOpen: boolean;
   onClose: () => void;
+  openLogin: () => void; // NEW
 }
 
 export default function PwaInstallModal({
   isOpen,
   onClose,
+  openLogin,
 }: PwaInstallModalProps) {
   if (!isOpen) return null;
 
   const { user } = useUser();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -40,7 +41,8 @@ export default function PwaInstallModal({
           {isRegistered ? (
             <button
               onClick={() => {
-                onClose(), setShowLogin(true);
+                onClose(); // close PWA modal
+                openLogin(); // open LoginModal in parent
               }}
               className="px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md"
             >
@@ -73,7 +75,10 @@ export default function PwaInstallModal({
               </div>
 
               <button
-                onClick={onClose}
+                onClick={() => {
+                  onClose(); // close PWA modal
+                  openLogin(); // open LoginModal in parent
+                }}
                 className="px-4 py-2 bg-gray-300 text-gray-900 rounded-full hover:bg-blue-400 transition shadow-md"
               >
                 Login
@@ -82,7 +87,6 @@ export default function PwaInstallModal({
           )}
 
           {isModalOpen && <RegistrationModal onClose={closeModal} />}
-          {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
         </div>
       </div>
     </div>
