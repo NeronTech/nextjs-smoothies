@@ -95,7 +95,7 @@ export default function RegistrationModal({ onClose }: RegistrationModalProps) {
 
     const otp = generateOtp();
     setMobileOtp(otp);
-
+    alert("📱 Mobile OTP (client simulation):" + otp);
     console.log("📱 Mobile OTP (client simulation):", otp);
 
     setStep("mobileOtp");
@@ -105,7 +105,7 @@ export default function RegistrationModal({ onClose }: RegistrationModalProps) {
     if (mobileOtpInput === mobileOtp) {
       const newEmailOtp = generateOtp();
       setEmailOtp(newEmailOtp);
-
+      alert("📧 Email OTP (client simulation):" + newEmailOtp);
       console.log("📧 Email OTP (client simulation):", newEmailOtp);
 
       setStep("emailOtp");

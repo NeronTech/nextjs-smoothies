@@ -200,6 +200,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setOtp(newOtp);
     setPhone(phoneInput);
     setEmail(emailInput || "");
+    alert("OTP sent:" + newOtp + "to" + phoneInput + emailInput);
     console.log("OTP sent:", newOtp, "to", phoneInput, emailInput);
   };
 
