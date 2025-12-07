@@ -1,6 +1,8 @@
 "use client";
 import { useCart } from "../context/CartContext";
 import { useForm } from "react-hook-form";
+import { useUser } from "../context/UserContext";
+import { useEffect } from "react";
 
 interface FormData {
   phone: string;
@@ -14,11 +16,22 @@ export default function OrderValidation() {
     openOtpModal,
     generateOtp,
   } = useCart();
+
+  const { user } = useUser();
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormData>();
+
+  useEffect(() => {
+    if (isValidationModalOpen && user) {
+      if (user.phone) setValue("phone", user.phone);
+      if (user.email) setValue("email", user.email);
+    }
+  }, [isValidationModalOpen, user, setValue]);
 
   const onSubmit = (data: FormData) => {
     generateOtp(data.phone, data.email);
@@ -31,7 +44,9 @@ export default function OrderValidation() {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300">
       <div className="bg-white p-6 rounded-lg w-11/12 max-w-md animate-fadeIn">
-        <h2 className="text-md font-bold mb-4">Enter Contact Info : Phone or Email</h2>
+        <h2 className="text-md font-bold mb-4">
+          Enter Contact Info : Phone or Email
+        </h2>
         <form
           className="flex flex-col space-y-2"
           onSubmit={handleSubmit(onSubmit)}
