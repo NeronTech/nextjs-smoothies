@@ -26,7 +26,7 @@ export default function OrderAddressModal() {
   const autocompleteRef = useRef<HTMLInputElement>(null);
 
   const googleLoaded = useLoadGoogleMaps();
-  const { saveUserAddress } = useUser();
+  const { saveUserAddress, user } = useUser();
 
   /** Reverse geocode function */
   const reverseGeocode = (lat: number, lng: number) => {
@@ -55,24 +55,36 @@ export default function OrderAddressModal() {
       position: map.getCenter(),
     });
 
-    const initialPos = map.getCenter()!.toJSON();
+    // ⬇️ If user has saved address, move map & marker
+    if (user?.address) {
+      const { lat, lng } = user.address.coordinates;
+
+      const position = { lat, lng };
+      map.setCenter(position);
+      marker.setPosition(position);
+
+      setResolvedAddress(user.address.address);
+      setSelectedLocation(position);
+    }
+
+    const initialPos = marker.getPosition()!.toJSON();
     setSelectedLocation(initialPos);
-    reverseGeocode(initialPos.lat, initialPos.lng); // reverse geocode initial position
+    reverseGeocode(initialPos.lat, initialPos.lng);
 
     marker.addListener("dragend", () => {
       const pos = marker.getPosition()!.toJSON();
       setSelectedLocation(pos);
-      reverseGeocode(pos.lat, pos.lng); // reverse geocode on drag
+      reverseGeocode(pos.lat, pos.lng);
     });
 
-    map.addListener("click", (e: google.maps.MapMouseEvent) => {
+    map.addListener("click", (e: any) => {
       if (!e.latLng) return;
       const pos = e.latLng.toJSON();
       marker.setPosition(e.latLng);
       setSelectedLocation(pos);
-      reverseGeocode(pos.lat, pos.lng); // reverse geocode on click
+      reverseGeocode(pos.lat, pos.lng);
     });
-  }, [googleLoaded, mode]);
+  }, [googleLoaded, mode, user]);
 
   /** Initialize Autocomplete */
   useEffect(() => {
@@ -94,6 +106,33 @@ export default function OrderAddressModal() {
       setResolvedAddress(place.formatted_address); // also update resolvedAddress
     });
   }, [googleLoaded, mode]);
+
+  useEffect(() => {
+    if (isOrderAddressModalOpen && user?.address) {
+      setMode("manual"); // <-- ensure input exists
+    }
+  }, [isOrderAddressModalOpen, user]);
+
+  useEffect(() => {
+    if (isOrderAddressModalOpen && user?.address) {
+      const { address, coordinates } = user.address;
+
+      setResolvedAddress(address);
+      setManualAddress(address);
+      setSelectedLocation(coordinates);
+
+      // Switch to MANUAL mode if you prefer auto-filling the textbox
+      // setMode("manual");
+    }
+
+    if (mode === "manual" && user?.address && autocompleteRef.current) {
+      autocompleteRef.current.value = user.address.address;
+
+      setResolvedAddress(user.address.address);
+      setManualAddress(user.address.address);
+      setSelectedLocation(user.address.coordinates);
+    }
+  }, [isOrderAddressModalOpen, mode, user]);
 
   /** Save Address */
   const handleSave = () => {

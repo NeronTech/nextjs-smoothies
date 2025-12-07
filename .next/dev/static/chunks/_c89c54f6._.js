@@ -894,7 +894,7 @@ function OrderAddressModal() {
     const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const autocompleteRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const googleLoaded = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
-    const { saveUserAddress } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"])();
+    const { saveUserAddress, user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$UserContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"])();
     /** Reverse geocode function */ const reverseGeocode = (lat, lng)=>{
         const geocoder = new google.maps.Geocoder();
         geocoder.geocode({
@@ -925,14 +925,26 @@ function OrderAddressModal() {
                 draggable: true,
                 position: map.getCenter()
             });
-            const initialPos = map.getCenter().toJSON();
+            // ⬇️ If user has saved address, move map & marker
+            if (user?.address) {
+                const { lat, lng } = user.address.coordinates;
+                const position = {
+                    lat,
+                    lng
+                };
+                map.setCenter(position);
+                marker.setPosition(position);
+                setResolvedAddress(user.address.address);
+                setSelectedLocation(position);
+            }
+            const initialPos = marker.getPosition().toJSON();
             setSelectedLocation(initialPos);
-            reverseGeocode(initialPos.lat, initialPos.lng); // reverse geocode initial position
+            reverseGeocode(initialPos.lat, initialPos.lng);
             marker.addListener("dragend", {
                 "OrderAddressModal.useEffect": ()=>{
                     const pos = marker.getPosition().toJSON();
                     setSelectedLocation(pos);
-                    reverseGeocode(pos.lat, pos.lng); // reverse geocode on drag
+                    reverseGeocode(pos.lat, pos.lng);
                 }
             }["OrderAddressModal.useEffect"]);
             map.addListener("click", {
@@ -941,13 +953,14 @@ function OrderAddressModal() {
                     const pos = e.latLng.toJSON();
                     marker.setPosition(e.latLng);
                     setSelectedLocation(pos);
-                    reverseGeocode(pos.lat, pos.lng); // reverse geocode on click
+                    reverseGeocode(pos.lat, pos.lng);
                 }
             }["OrderAddressModal.useEffect"]);
         }
     }["OrderAddressModal.useEffect"], [
         googleLoaded,
-        mode
+        mode,
+        user
     ]);
     /** Initialize Autocomplete */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "OrderAddressModal.useEffect": ()=>{
@@ -971,6 +984,38 @@ function OrderAddressModal() {
     }["OrderAddressModal.useEffect"], [
         googleLoaded,
         mode
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderAddressModal.useEffect": ()=>{
+            if (isOrderAddressModalOpen && user?.address) {
+                setMode("manual"); // <-- ensure input exists
+            }
+        }
+    }["OrderAddressModal.useEffect"], [
+        isOrderAddressModalOpen,
+        user
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderAddressModal.useEffect": ()=>{
+            if (isOrderAddressModalOpen && user?.address) {
+                const { address, coordinates } = user.address;
+                setResolvedAddress(address);
+                setManualAddress(address);
+                setSelectedLocation(coordinates);
+            // Switch to MANUAL mode if you prefer auto-filling the textbox
+            // setMode("manual");
+            }
+            if (mode === "manual" && user?.address && autocompleteRef.current) {
+                autocompleteRef.current.value = user.address.address;
+                setResolvedAddress(user.address.address);
+                setManualAddress(user.address.address);
+                setSelectedLocation(user.address.coordinates);
+            }
+        }
+    }["OrderAddressModal.useEffect"], [
+        isOrderAddressModalOpen,
+        mode,
+        user
     ]);
     /** Save Address */ const handleSave = ()=>{
         if (!selectedLocation) return;
@@ -996,7 +1041,7 @@ function OrderAddressModal() {
                     children: "Select Delivery Address"
                 }, void 0, false, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 121,
+                    lineNumber: 160,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1008,7 +1053,7 @@ function OrderAddressModal() {
                             children: "📍 Pick from Map"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 124,
+                            lineNumber: 163,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1017,13 +1062,13 @@ function OrderAddressModal() {
                             children: "✏️ Enter Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 132,
+                            lineNumber: 171,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 123,
+                    lineNumber: 162,
                     columnNumber: 9
                 }, this),
                 mode === "map" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1037,7 +1082,7 @@ function OrderAddressModal() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 144,
+                            lineNumber: 183,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1048,7 +1093,7 @@ function OrderAddressModal() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 148,
+                            lineNumber: 187,
                             columnNumber: 13
                         }, this)
                     ]
@@ -1061,7 +1106,7 @@ function OrderAddressModal() {
                         className: "border p-2 w-full rounded"
                     }, void 0, false, {
                         fileName: "[project]/components/OrderAddressModal.tsx",
-                        lineNumber: 156,
+                        lineNumber: 195,
                         columnNumber: 13
                     }, this)
                 }, void 0, false),
@@ -1074,7 +1119,7 @@ function OrderAddressModal() {
                             children: addressModalTrigger === "login" ? "Skip for now" : "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 166,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1083,28 +1128,28 @@ function OrderAddressModal() {
                             children: "Save Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 172,
+                            lineNumber: 211,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 165,
+                    lineNumber: 204,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/OrderAddressModal.tsx",
-            lineNumber: 120,
+            lineNumber: 159,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/OrderAddressModal.tsx",
-        lineNumber: 119,
+        lineNumber: 158,
         columnNumber: 5
     }, this);
 }
-_s(OrderAddressModal, "udFYITOcD+aqQf0uxhUtSQ0su3I=", false, function() {
+_s(OrderAddressModal, "QvpHMLjenyAsO49pWR28+DRhbsk=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useLoadGoogleMaps$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
