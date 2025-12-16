@@ -221,6 +221,7 @@ function RegistrationModal({ onClose }) {
         }
         const otp = generateOtp();
         setMobileOtp(otp);
+        alert("📱 Mobile OTP (client simulation):" + otp);
         console.log("📱 Mobile OTP (client simulation):", otp);
         setStep("mobileOtp");
     };
@@ -228,6 +229,7 @@ function RegistrationModal({ onClose }) {
         if (mobileOtpInput === mobileOtp) {
             const newEmailOtp = generateOtp();
             setEmailOtp(newEmailOtp);
+            alert("📧 Email OTP (client simulation):" + newEmailOtp);
             console.log("📧 Email OTP (client simulation):", newEmailOtp);
             setStep("emailOtp");
         } else {
@@ -1822,6 +1824,7 @@ const CartProvider = ({ children })=>{
         setOtp(newOtp);
         setPhone(phoneInput);
         setEmail(emailInput || "");
+        alert("OTP sent:" + newOtp + "to" + phoneInput + emailInput);
         console.log("OTP sent:", newOtp, "to", phoneInput, emailInput);
     };
     const validateOtp = (input)=>{
@@ -1883,28 +1886,28 @@ const CartProvider = ({ children })=>{
                 onClose: ()=>setToast(null)
             }, void 0, false, {
                 fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 263,
+                lineNumber: 264,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             isOrderAddressModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$OrderAddressModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 269,
+                lineNumber: 270,
                 columnNumber: 35
             }, ("TURBOPACK compile-time value", void 0)),
             isCheckoutSummaryModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CheckoutSummaryModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 270,
+                lineNumber: 271,
                 columnNumber: 38
             }, ("TURBOPACK compile-time value", void 0)),
             isPaymentModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PaymentModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/context/CartContext.tsx",
-                lineNumber: 271,
+                lineNumber: 272,
                 columnNumber: 30
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/context/CartContext.tsx",
-        lineNumber: 221,
+        lineNumber: 222,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -6,6 +6,7 @@ import { useCart } from "../context/CartContext";
 import { useToast } from "../context/ToastContext";
 import LoginModal from "./LoginModal";
 import { useUser } from "../context/UserContext";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,11 +14,6 @@ export default function Header() {
   const { showToast } = useToast();
   const [showLogin, setShowLogin] = useState(false);
   const { user, loadUser, logout } = useUser();
-
-  // Optional: Load user on mount
-  useEffect(() => {
-    loadUser();
-  }, []);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
@@ -180,7 +176,12 @@ export default function Header() {
         {user && (
           <div className="flex flex-col items-end text-right space-x-3 pr-6">
             <span className="text-gray-800 text-xs">
-              Hello, <b>{(user.fullName ?? "User").split(" ")[0]}!</b>
+              <Link
+                href="/account"
+                className="text-gray-700 hover:text-blue-600 text-sm"
+              >
+                Hello, <b>{(user.fullName ?? "User").split(" ")[0]}!</b>
+              </Link>
             </span>
           </div>
         )}
