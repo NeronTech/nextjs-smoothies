@@ -1,47 +1,44 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import ProfileSection from "../account/ProfileInfo";
+import AddressSection from "../account//AddressSection";
+import PasswordSection from "../account/PasswordSection";
+
+import { useState } from "react";
 import { useUser } from "../../context/UserContext";
-
+import Link from "next/link";
 export default function AccountPage() {
-  const { user } = useUser();
-  const router = useRouter();
+  const { user, updateUser } = useUser();
+  const [editing, setEditing] = useState(false);
 
-  // Redirect if not logged in
-  useEffect(() => {
-    if (!user) {
-      router.push("/"); // or /login
-    }
-  }, [user, router]);
+  const [form, setForm] = useState({
+    fullName: user?.fullName || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+  });
 
-  if (!user) return null; // prevent flicker
+  if (!user) return null;
+
+  const handleSave = () => {
+    updateUser(form);
+    setEditing(false);
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">My Account</h1>
 
       <div className="bg-white rounded-xl shadow p-6 space-y-4">
-        <p>
-          <strong>Full Name:</strong> {user.fullName}
-        </p>
-        <p>
-          <strong>Email:</strong> {user.email}
-        </p>
-        <p>
-          <strong>Phone:</strong> {user.phone}
-        </p>
-        <p>
-          <strong>Username:</strong> {user.username}
-        </p>
-
-        {user.address && (
-          <div className="pt-4 border-t">
-            <h2 className="font-semibold mb-2">Address</h2>
-            <p>{user.address.address}</p>
-          </div>
-        )}
+        <ProfileSection />
+        <AddressSection />
+        <PasswordSection />
       </div>
+      <Link
+        href="/"
+        className="mt-6 inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      >
+        Back to Home
+      </Link>
     </div>
   );
 }

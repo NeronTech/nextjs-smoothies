@@ -25,13 +25,35 @@ const UserContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
     registerUser: ()=>{},
     logout: ()=>{},
     loginUser: ()=>{},
-    saveUserAddress: ()=>{}
+    saveUserAddress: ()=>{},
+    updateUser: ()=>{},
+    changePassword: ()=>false
 });
 function UserProvider({ children }) {
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const loadUser = ()=>{
         const stored = localStorage.getItem("userProfile");
         if (stored) setUser(JSON.parse(stored));
+    };
+    const updateUser = (updatedData)=>{
+        if (!user) return;
+        const updatedUser = {
+            ...user,
+            ...updatedData
+        };
+        setUser(updatedUser);
+        localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+    };
+    const changePassword = (oldPass, newPass)=>{
+        if (!user) return false;
+        if (user.password !== oldPass) return false;
+        const updatedUser = {
+            ...user,
+            password: newPass
+        };
+        setUser(updatedUser);
+        localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+        return true;
     };
     const registerUser = (userData)=>{
         // Save back to localStorage
@@ -67,12 +89,14 @@ function UserProvider({ children }) {
             registerUser,
             logout,
             loginUser,
-            saveUserAddress
+            saveUserAddress,
+            updateUser,
+            changePassword
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/context/UserContext.tsx",
-        lineNumber: 88,
+        lineNumber: 118,
         columnNumber: 5
     }, this);
 }

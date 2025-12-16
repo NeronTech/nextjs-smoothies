@@ -872,6 +872,10 @@ img, video {
   gap: 2.5rem;
 }
 
+.gap-2 {
+  gap: .5rem;
+}
+
 .gap-3 {
   gap: .75rem;
 }

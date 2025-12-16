@@ -26,6 +26,8 @@ interface UserContextType {
     address: string;
     coordinates: { lat: number; lng: number };
   }) => void;
+  updateUser: (updatedData: Partial<UserProfile>) => void;
+  changePassword: (oldPass: string, newPass: string) => boolean;
 }
 
 const UserContext = createContext<UserContextType>({
@@ -35,6 +37,8 @@ const UserContext = createContext<UserContextType>({
   logout: () => {},
   loginUser: () => {},
   saveUserAddress: () => {},
+  updateUser: () => {},
+  changePassword: () => false,
 });
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
@@ -43,6 +47,32 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const loadUser = () => {
     const stored = localStorage.getItem("userProfile");
     if (stored) setUser(JSON.parse(stored));
+  };
+
+  const updateUser = (updatedData: Partial<UserProfile>) => {
+    if (!user) return;
+
+    const updatedUser = {
+      ...user,
+      ...updatedData,
+    };
+
+    setUser(updatedUser);
+    localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+  };
+
+  const changePassword = (oldPass: string, newPass: string) => {
+    if (!user) return false;
+    if (user.password !== oldPass) return false;
+
+    const updatedUser = {
+      ...user,
+      password: newPass,
+    };
+
+    setUser(updatedUser);
+    localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+    return true;
   };
 
   const registerUser = (userData: UserProfile) => {
@@ -93,6 +123,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         logout,
         loginUser,
         saveUserAddress,
+        updateUser,
+        changePassword,
       }}
     >
       {children}
