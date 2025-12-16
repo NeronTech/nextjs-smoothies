@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useUser } from "../../context/UserContext";
+import { useCart } from "../../context/CartContext";
 
 export default function AddressSection() {
+
   const { user, saveUserAddress } = useUser();
   const [editing, setEditing] = useState(false);
   const [address, setAddress] = useState(user?.address?.address || "");
+  const { openOrderAddressModal } = useCart();
 
   if (!user) return null;
 
@@ -24,7 +27,7 @@ export default function AddressSection() {
         <>
           <p>{user.address?.address || "No address saved"}</p>
           <button
-            onClick={() => setEditing(true)}
+            onClick={() => openOrderAddressModal("profile")}
             className="text-purple-600 mt-2"
           >
             Edit Address

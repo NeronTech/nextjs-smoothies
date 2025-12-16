@@ -44,9 +44,9 @@ interface CartContextType {
   phone: string;
   email?: string;
   isOrderAddressModalOpen: boolean;
-  openOrderAddressModal: (trigger: "login" | "checkout") => void;
+  openOrderAddressModal: (trigger: "login" | "checkout" | "profile") => void;
   closeOrderAddressModal: () => void;
-  addressModalTrigger: "login" | "checkout" | null;
+  addressModalTrigger: "login" | "checkout" | "profile" | null;
   address: {
     address: string;
     coordinates: { lat: number; lng: number };
@@ -97,7 +97,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [isCheckoutSummaryModalOpen, setCheckoutSummaryModalOpen] =
     useState(false);
   const [addressModalTrigger, setAddressModalTrigger] = useState<
-    "login" | "checkout" | null
+    "login" | "checkout" | "profile" | null
   >(null);
 
   const clearCart = () => setCart([]);
@@ -178,7 +178,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const openOtpModal = () => setOtpModalOpen(true);
   const closeOtpModal = () => setOtpModalOpen(false);
 
-  const openOrderAddressModal = (trigger: "login" | "checkout") => {
+  const openOrderAddressModal = (trigger: "login" | "checkout" | "profile") => {
     setAddressModalTrigger(trigger);
     setOrderAddressModalOpen(true);
   };

@@ -138,18 +138,23 @@ export default function OrderAddressModal() {
   const handleSave = () => {
     if (!selectedLocation) return;
 
+    const finalAddress = resolvedAddress || manualAddress || "Pinned on map";
+
     saveAddress({
-      address: resolvedAddress || manualAddress || "Pinned on map",
+      address: finalAddress,
       coordinates: selectedLocation,
     });
 
     saveUserAddress({
-      address: resolvedAddress || manualAddress || "Pinned on map",
+      address: finalAddress,
       coordinates: selectedLocation,
-    }); // NEW (User Profile)
+    });
 
     closeOrderAddressModal();
-    addressModalTrigger === "checkout" && openCheckoutSummary();
+
+    if (addressModalTrigger === "checkout") {
+      openCheckoutSummary();
+    }
   };
 
   if (!isOrderAddressModalOpen) return null;

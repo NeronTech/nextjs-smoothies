@@ -973,16 +973,19 @@ function OrderAddressModal() {
     ]);
     /** Save Address */ const handleSave = ()=>{
         if (!selectedLocation) return;
+        const finalAddress = resolvedAddress || manualAddress || "Pinned on map";
         saveAddress({
-            address: resolvedAddress || manualAddress || "Pinned on map",
+            address: finalAddress,
             coordinates: selectedLocation
         });
         saveUserAddress({
-            address: resolvedAddress || manualAddress || "Pinned on map",
+            address: finalAddress,
             coordinates: selectedLocation
-        }); // NEW (User Profile)
+        });
         closeOrderAddressModal();
-        addressModalTrigger === "checkout" && openCheckoutSummary();
+        if (addressModalTrigger === "checkout") {
+            openCheckoutSummary();
+        }
     };
     if (!isOrderAddressModalOpen) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -995,7 +998,7 @@ function OrderAddressModal() {
                     children: "Select Delivery Address"
                 }, void 0, false, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 160,
+                    lineNumber: 165,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1007,7 +1010,7 @@ function OrderAddressModal() {
                             children: "📍 Pick from Map"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 163,
+                            lineNumber: 168,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1016,13 +1019,13 @@ function OrderAddressModal() {
                             children: "✏️ Enter Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 171,
+                            lineNumber: 176,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 162,
+                    lineNumber: 167,
                     columnNumber: 9
                 }, this),
                 mode === "map" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1036,7 +1039,7 @@ function OrderAddressModal() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 183,
+                            lineNumber: 188,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1047,7 +1050,7 @@ function OrderAddressModal() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 187,
+                            lineNumber: 192,
                             columnNumber: 13
                         }, this)
                     ]
@@ -1060,7 +1063,7 @@ function OrderAddressModal() {
                         className: "border p-2 w-full rounded"
                     }, void 0, false, {
                         fileName: "[project]/components/OrderAddressModal.tsx",
-                        lineNumber: 195,
+                        lineNumber: 200,
                         columnNumber: 13
                     }, this)
                 }, void 0, false),
@@ -1073,7 +1076,7 @@ function OrderAddressModal() {
                             children: addressModalTrigger === "login" ? "Skip for now" : "Close"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 205,
+                            lineNumber: 210,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1082,24 +1085,24 @@ function OrderAddressModal() {
                             children: "Save Address"
                         }, void 0, false, {
                             fileName: "[project]/components/OrderAddressModal.tsx",
-                            lineNumber: 211,
+                            lineNumber: 216,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/OrderAddressModal.tsx",
-                    lineNumber: 204,
+                    lineNumber: 209,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/OrderAddressModal.tsx",
-            lineNumber: 159,
+            lineNumber: 164,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/OrderAddressModal.tsx",
-        lineNumber: 158,
+        lineNumber: 163,
         columnNumber: 5
     }, this);
 }
