@@ -113,7 +113,7 @@ export default function PwaRegister({
     <>
       {children}
 
-      {showBanner && (
+      /* {showBanner && (
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={handleInstallClick}
@@ -131,7 +131,7 @@ export default function PwaRegister({
           openLogin={() => setShowLogin(true)}
         />
       )}
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />} */
     </>
   );
 }
