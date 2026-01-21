@@ -128,7 +128,7 @@ export default function MenuSection() {
                         </p>
                         <div className="mt-3 flex items-center justify-between">
                           <span className="font-bold text-indigo-600">
-                            ${formatPrice(item.price)}
+                            Rs. {formatPrice(item.price)}
                           </span>
                           <button
                             onClick={() =>
